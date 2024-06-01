@@ -11,7 +11,7 @@ var current_level = 1
 
 func _ready():
 	G.connect("handle_collectable",Callable(self,"score_aa"))
-	#load_level(current_level)
+	load_level(current_level)
 
 func score_aa():
 	score += 1
@@ -19,7 +19,7 @@ func score_aa():
 	if score == SCOOPS_NEEDED:
 		var new_van = VAN.instantiate()
 		add_child(new_van)
-		new_van.position = Vector2(0, 400)  # Set the desired position here
+		new_van.position = Vector2(0, 80)  # Set the desired position here
 		score = 0
 
 func load_level(id:int):

@@ -93,7 +93,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_s84ns")
 }],
-"loop": true,
+"loop": false,
 "name": &"spoon_attack",
 "speed": 15.0
 }, {
@@ -161,8 +161,8 @@ stream = SubResource("AudioStreamRandomizer_wiegp")
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_goh6h")
 animation = &"spoon_attack"
-frame = 4
-frame_progress = 0.840339
+frame = 5
+frame_progress = 1.0
 offset = Vector2(-36, 4)
 
 [connection signal="area_entered" from="PlayerDetectionBox" to="." method="_on_player_detection_box_area_entered"]

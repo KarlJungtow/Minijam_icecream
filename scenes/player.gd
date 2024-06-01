@@ -22,6 +22,7 @@ var start_pos: Vector2
 
 func _ready():
 	start_pos = position
+	get_flame_thrower()
 	G.connect("player_died",Callable(self,"die"))
 
 
@@ -96,7 +97,7 @@ func _input(event):
 		if using_flamethrower:
 			
 			var instance = flame_scene.instantiate()
-			instance.global_position = $FlameThrowerAnchor/PlaceHolderFlameThrower.global_position
+			instance.global_position = $FlameThrowerAnchor/Flamethrower.global_position
 			instance.rotation = $FlameThrowerAnchor.rotation
 			$FlameThrowerAnchor/Flames.add_child(instance)
 			
@@ -110,13 +111,12 @@ func _on_player_detection_box_area_entered(area):
 
 func attack():
 	print("Attack")
-	if not using_flamethrower:
-		$PlayerSprite.play("spoon_attack")
-		attacking = true
-		var enemies = $"../enemies".get_children()
-		if enemies != null:
-			for child in enemies:
-				if abs(child.position.x - position.x) < 125 and abs(child.position.y - position.y) < 80:
-					child.queue_free()
+	$PlayerSprite.play("spoon_attack")
+	attacking = true
+	var enemies = $"../enemies".get_children()
+	if enemies != null:
+		for child in enemies:
+			if abs(child.position.x - position.x) < 125 and abs(child.position.y - position.y) < 80:
+				child.queue_free()
 		
 
