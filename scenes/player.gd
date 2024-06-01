@@ -4,21 +4,39 @@ extends CharacterBody2D
 const SPEED = 600.0
 const JUMP_VELOCITY = -400.0
 
-# Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
+var coyote_time = 0.0
+var late_jump_time = 0.0
+
+var start_pos: Vector2
+
+func _ready():
+	start_pos = position
+	G.connect("player_died",Callable(self,"die"))
+
+func die():
+	position = start_pos
+
+func _process(delta):
+	coyote_time -= delta
+	late_jump_time -= delta
 
 func _physics_process(delta):
-	# Add the gravity.
+	
 	if not is_on_floor():
 		velocity.y += gravity * delta
 
-	# Handle jump.
-	if Input.is_action_just_pressed("jump") and is_on_floor():
+	if Input.is_action_just_pressed("jump"):
+		late_jump_time = 0.1
+	if is_on_floor():
+		coyote_time = 0.1
+	if late_jump_time >= 0.0 and coyote_time >= 0.0:
+		late_jump_time = -1.0
 		velocity.y = JUMP_VELOCITY
-
-	# Get the input direction and handle the movement/deceleration.
-	# As good practice, you should replace UI actions with custom gameplay actions.
+	
+	
+	
 	var direction = Input.get_axis("move-left", "move-right")
 	if direction:
 		velocity.x = direction * SPEED
@@ -26,3 +44,8 @@ func _physics_process(delta):
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 
 	move_and_slide()
+
+
+func _on_player_detection_box_area_entered(area):
+	if get_tree().get_nodes_in_group("CheckPoint").has(area):
+		start_pos = area.position

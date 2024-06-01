@@ -2,9 +2,14 @@
 
 [ext_resource type="PackedScene" uid="uid://bjkukdy2ofn8t" path="res://scenes/player.tscn" id="1_pmj6e"]
 [ext_resource type="PackedScene" uid="uid://bk1j06hh033nw" path="res://pickups/scoop.tscn" id="2_lbmvq"]
+[ext_resource type="PackedScene" uid="uid://cyft5asqax5y3" path="res://scenes/killzone.tscn" id="2_suf0s"]
+[ext_resource type="PackedScene" uid="uid://hbnmbi33fnp0" path="res://scenes/checkpoint.tscn" id="3_mhlqg"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6270u"]
 size = Vector2(462, 35)
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_8kowk"]
+distance = -227.0
 
 [node name="TestLevel" type="Node2D"]
 
@@ -22,5 +27,14 @@ shape = SubResource("RectangleShape2D_6270u")
 [node name="Player" parent="." instance=ExtResource("1_pmj6e")]
 position = Vector2(452, 302)
 
+
 [node name="Scoop" parent="." instance=ExtResource("2_lbmvq")]
 position = Vector2(667, 434)
+[node name="Killzone" parent="." instance=ExtResource("2_suf0s")]
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Killzone"]
+position = Vector2(510, 441)
+shape = SubResource("WorldBoundaryShape2D_8kowk")
+
+[node name="Checkpoint" parent="." instance=ExtResource("3_mhlqg")]
+position = Vector2(655, 441)
