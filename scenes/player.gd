@@ -111,13 +111,12 @@ func _on_player_detection_box_area_entered(area):
 
 func attack():
 	print("Attack")
-	if not using_flamethrower:
-		$PlayerSprite.play("spoon_attack")
-		attacking = true
-		var enemies = $"../enemies".get_children()
-		if enemies != null:
-			for child in enemies:
-				if abs(child.position.x - position.x) < 125 and abs(child.position.y - position.y) < 80:
-					child.queue_free()
+	$PlayerSprite.play("spoon_attack")
+	attacking = true
+	var enemies = $"../enemies".get_children()
+	if enemies != null:
+		for child in enemies:
+			if abs(child.position.x - position.x) < 125 and abs(child.position.y - position.y) < 80:
+				child.queue_free()
 		
 
