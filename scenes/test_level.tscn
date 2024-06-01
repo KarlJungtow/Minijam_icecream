@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://jqr4114xgrhx"]
+[gd_scene load_steps=7 format=3 uid="uid://jqr4114xgrhx"]
 
 [ext_resource type="PackedScene" uid="uid://bjkukdy2ofn8t" path="res://scenes/player.tscn" id="1_pmj6e"]
 [ext_resource type="PackedScene" uid="uid://oxtfdsfew20n" path="res://scenes/killzone.tscn" id="2_suf0s"]
-[ext_resource type="PackedScene" path="res://scenes/checkpoint.tscn" id="3_mhlqg"]
+[ext_resource type="PackedScene" uid="uid://hbnmbi33fnp0" path="res://scenes/checkpoint.tscn" id="3_mhlqg"]
+[ext_resource type="PackedScene" uid="uid://bqmq5pnphm6yl" path="res://scenes/enemy.tscn" id="4_7hwwk"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6270u"]
 size = Vector2(462, 35)
@@ -34,3 +35,6 @@ shape = SubResource("WorldBoundaryShape2D_8kowk")
 
 [node name="Checkpoint" parent="." instance=ExtResource("3_mhlqg")]
 position = Vector2(655, 441)
+
+[node name="Enemy" parent="." instance=ExtResource("4_7hwwk")]
+position = Vector2(287, 500)
