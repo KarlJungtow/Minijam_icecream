@@ -13,14 +13,17 @@ var using_flamethrower: bool = false
 var coyote_time = 0.0
 var late_jump_time = 0.0
 
+var force_push = 1000
+
+
+var attacking = false
 var start_pos: Vector2
 @onready var sprite_2d = $PlayerSprite
 
 func _ready():
-	get_flame_thrower()
 	start_pos = position
 	G.connect("player_died",Callable(self,"die"))
-	get_flame_thrower()
+
 
 func get_flame_thrower():
 	$FlameThrowerAnchor.show()
@@ -43,7 +46,11 @@ func _physics_process(delta):
 	
 	if not is_on_floor():
 		velocity.y += gravity * delta
+	if Input.is_action_pressed("attack"):
+		attack()
 
+	if $PlayerSprite.is_playing() == false:
+		attacking = false
 	if Input.is_action_just_pressed("jump"):
 		$jumps_sounds.play()
 		late_jump_time = 0.1
@@ -63,11 +70,21 @@ func _physics_process(delta):
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 	
+	var collided = move_and_slide()
+	
+	#apply force to collided stuff
+	if collided:
+		for i in get_slide_collision_count():
+			var col = get_slide_collision(i)
+			if col.get_collider() is RigidBody2D:
+				col.get_collider().apply_force(col.get_normal() * -force_push)
+	
+	
 	if abs(velocity.x) >= 0.01 and coyote_time >= 0.0:
-		if $PlayerSprite.is_playing() == false:
+		if $PlayerSprite.is_playing() == false :
 			$PlayerSprite.play("walk")
-	else:
-		$PlayerSprite.stop()
+	elif not attacking:
+			$PlayerSprite.stop()
 	
 	move_and_slide()
 
@@ -84,8 +101,22 @@ func _input(event):
 			$FlameThrowerAnchor/Flames.add_child(instance)
 			
 			move_and_slide()
-			
+
 			
 func _on_player_detection_box_area_entered(area):
 	if get_tree().get_nodes_in_group("CheckPoint").has(area):
 		start_pos = area.position
+
+
+func attack():
+	print("Attack")
+	if not using_flamethrower:
+		$PlayerSprite.play("spoon_attack")
+		attacking = true
+		var enemies = $"../enemies".get_children()
+		if enemies != null:
+			for child in enemies:
+				if abs(child.position.x - position.x) < 125 and abs(child.position.y - position.y) < 80:
+					child.queue_free()
+		
+
