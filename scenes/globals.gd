@@ -1,6 +1,6 @@
 extends Node
 
-
+signal pickup_scoop
 
 func _ready():
 	pass
