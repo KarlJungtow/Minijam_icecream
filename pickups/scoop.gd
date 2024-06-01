@@ -13,5 +13,6 @@ func _process(delta):
 
 
 func _on_body_entered(body):
-	G.pickup_scoop.emit()
-	queue_free()
+	if get_tree().get_nodes_in_group("Player").has(body):
+		G.pickup_scoop.emit()
+		queue_free()
