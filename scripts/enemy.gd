@@ -11,7 +11,8 @@ var direction = 1
 
 @onready var melting_parts = $MeltingParts
 
-
+func die():
+	$Sprite2D/AnimationPlayer.play("death")
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	if ray_cast_2d_right.is_colliding():
@@ -29,3 +30,8 @@ func _process(delta):
 
 func _on_killzone_area_entered(area:Area2D):
 	pass # Replace with function body.
+
+
+func _on_animation_player_animation_finished(anim_name: StringName) -> void:
+	if anim_name == "death":
+		queue_free()
