@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://bqmq5pnphm6yl"]
+[gd_scene load_steps=6 format=3 uid="uid://bqmq5pnphm6yl"]
 
 [ext_resource type="Texture2D" uid="uid://d4d21k2ui8yt3" path="res://assets/slime_green.png" id="1_e6cjc"]
 [ext_resource type="Script" path="res://scripts/enemy.gd" id="1_l5rm7"]
@@ -7,7 +7,10 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_edsvr"]
 size = Vector2(10, 8)
 
-[node name="Enemy" type="Node2D"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_h7vp0"]
+size = Vector2(48, 33)
+
+[node name="Enemy" type="Area2D" groups=["enemy"]]
 script = ExtResource("1_l5rm7")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
@@ -25,3 +28,7 @@ target_position = Vector2(-17, 0)
 
 [node name="RayCast2DRight" type="RayCast2D" parent="."]
 target_position = Vector2(22, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 6.5)
+shape = SubResource("RectangleShape2D_h7vp0")
