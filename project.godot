@@ -14,6 +14,10 @@ config/name="Minijam Icecream"
 config/features=PackedStringArray("4.2", "Mobile")
 config/icon="res://icon.svg"
 
+[autoload]
+
+G="*res://scenes/globals.gd"
+
 [dotnet]
 
 project/assembly_name="Minijam Icecream"
