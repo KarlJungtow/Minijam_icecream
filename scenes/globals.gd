@@ -1,5 +1,6 @@
 extends Node
 
+signal pickup_scoop
 signal player_died
 
 func _ready():
