@@ -19,3 +19,15 @@ func _on_button_pressed():
 func _on_button_3_pressed():
 	G.change_level("res://scenes/intro.tscn")
 	pass # Replace with function body.
+
+
+func _on_button_4_pressed():
+	$Team.visible = false
+	$Button.visible = true
+	pass # Replace with function body.
+
+
+func _on_button_2_pressed():
+	$Team.visible = true
+	$Button.visible = false
+	pass # Replace with function body.
