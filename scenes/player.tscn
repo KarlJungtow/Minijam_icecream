@@ -1,6 +1,7 @@
-[gd_scene load_steps=16 format=3 uid="uid://bjkukdy2ofn8t"]
+[gd_scene load_steps=17 format=3 uid="uid://bjkukdy2ofn8t"]
 
 [ext_resource type="Script" path="res://scenes/player.gd" id="1_miuig"]
+[ext_resource type="Texture2D" uid="uid://ckb7uu2pxdkxf" path="res://assets/Flamethrower.png" id="2_5v41g"]
 [ext_resource type="AudioStream" uid="uid://ciyb4jpleh0hu" path="res://sounds/jump1.wav" id="3_x7s2x"]
 [ext_resource type="AudioStream" uid="uid://dtivltqjafkmn" path="res://sounds/jump2.wav" id="4_jbenm"]
 [ext_resource type="AudioStream" uid="uid://cjvm8b12hbbmi" path="res://sounds/die1.wav" id="5_tgbxs"]
@@ -79,10 +80,10 @@ shape = SubResource("CapsuleShape2D_1o1e8")
 
 [node name="FlameThrowerAnchor" type="Node2D" parent="."]
 
-[node name="PlaceHolderFlameThrower" type="Polygon2D" parent="FlameThrowerAnchor"]
-position = Vector2(131, -2)
-color = Color(1, 0.278431, 0.345098, 1)
-polygon = PackedVector2Array(-31, -11, -46, -4, -36, 9, -26, 9, -10, 10, 5, 10, 12, 2, -6, 0, 10, -12, -28, -11)
+[node name="Flamethrower" type="Sprite2D" parent="FlameThrowerAnchor"]
+texture_filter = 1
+position = Vector2(125, -2)
+texture = ExtResource("2_5v41g")
 
 [node name="Flames" type="Node2D" parent="FlameThrowerAnchor"]
 
