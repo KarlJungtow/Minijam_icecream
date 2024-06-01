@@ -2,7 +2,7 @@ extends CharacterBody2D
 
 
 const SPEED = 800.0
-const JUMP_VELOCITY = -600.0
+const JUMP_VELOCITY = -800.0
 
 const flame_scene = preload("res://scenes/flame.tscn")
 
@@ -58,8 +58,6 @@ func _physics_process(delta):
 	if late_jump_time >= 0.0 and coyote_time >= 0.0:
 		late_jump_time = -1.0
 		velocity.y = JUMP_VELOCITY
-	
-	
 	
 	var direction = Input.get_axis("move-left", "move-right")
 	if direction > 0: 
