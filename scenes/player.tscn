@@ -8,7 +8,7 @@
 [ext_resource type="AudioStream" uid="uid://cotwq6vpkk7ay" path="res://sounds/die2.wav" id="6_vty3q"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_1o1e8"]
-radius = 33.0
+radius = 26.0
 height = 152.0
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_vh3kp"]
