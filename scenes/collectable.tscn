@@ -1,10 +1,56 @@
-[gd_scene load_steps=4 format=3 uid="uid://dtlkale21ltm6"]
+[gd_scene load_steps=7 format=3 uid="uid://dtlkale21ltm6"]
 
 [ext_resource type="Script" path="res://scripts/collectable.gd" id="1_skwfu"]
 [ext_resource type="Texture2D" uid="uid://c357wy3jxixq" path="res://icon.svg" id="2_71o7l"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8stky"]
 size = Vector2(65, 65)
+
+[sub_resource type="Animation" id="Animation_3rpnn"]
+resource_name = "death"
+length = 0.5
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("collectable/Sprite2D:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 6.28319, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.5)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("collectable/Sprite2D:scale:x")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(0.5, -0.25, 0, 0.25, 0, 2.08165e-12, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.5)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("collectable/Sprite2D:scale:y")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(0.5, -0.25, 0, 0.25, 0, 2.08165e-12, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.5)
+}
+
+[sub_resource type="Animation" id="Animation_8jpxo"]
+length = 0.001
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_of6gi"]
+_data = {
+"RESET": SubResource("Animation_8jpxo"),
+"death": SubResource("Animation_3rpnn")
+}
 
 [node name="Collectable" type="Node2D"]
 
@@ -16,8 +62,14 @@ position = Vector2(2.08165e-12, 2.08165e-12)
 shape = SubResource("RectangleShape2D_8stky")
 
 [node name="Sprite2D" type="Sprite2D" parent="collectable"]
-position = Vector2(2.08165e-12, 2.08165e-12)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("2_71o7l")
 
+[node name="collectable_animation_player" type="AnimationPlayer" parent="collectable"]
+root_node = NodePath("../..")
+libraries = {
+"": SubResource("AnimationLibrary_of6gi")
+}
+
 [connection signal="body_entered" from="collectable" to="collectable" method="_on_body_entered"]
+[connection signal="animation_finished" from="collectable/collectable_animation_player" to="collectable" method="_on_collectable_animation_player_animation_finished"]
