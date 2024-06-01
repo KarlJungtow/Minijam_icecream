@@ -4,7 +4,8 @@ var speed = 400
 
 func _ready():
 	if randi_range(0,1) == 0:
-		$Fire.flip_v = true
+		if $Fire:
+			$Fire.flip_v = true
 
 func _physics_process(delta):
 	position += Vector2(speed * delta,0).rotated(rotation)
