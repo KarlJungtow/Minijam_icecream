@@ -48,6 +48,7 @@ func _physics_process(delta):
 		if not using_flamethrower:
 			$PlayerSprite.play("spoon_attack")
 			attacking = true
+
 	if $PlayerSprite.is_playing() == false:
 		attacking = false
 	if Input.is_action_just_pressed("jump"):
