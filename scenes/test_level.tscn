@@ -1,9 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://jqr4114xgrhx"]
+[gd_scene load_steps=9 format=3 uid="uid://jqr4114xgrhx"]
 
 [ext_resource type="PackedScene" uid="uid://bjkukdy2ofn8t" path="res://scenes/player.tscn" id="1_pmj6e"]
-[ext_resource type="PackedScene" uid="uid://oxtfdsfew20n" path="res://scenes/killzone.tscn" id="2_suf0s"]
-[ext_resource type="Script" path="res://scenes/Enemy.gd" id="3_a3kah"]
-[ext_resource type="Texture2D" uid="uid://c357wy3jxixq" path="res://icon.svg" id="4_e6dwg"]
+[ext_resource type="PackedScene" uid="uid://bk1j06hh033nw" path="res://pickups/scoop.tscn" id="2_lbmvq"]
+[ext_resource type="PackedScene" uid="uid://cyft5asqax5y3" path="res://scenes/killzone.tscn" id="2_suf0s"]
+[ext_resource type="PackedScene" path="res://scenes/checkpoint.tscn" id="3_mhlqg"]
+[ext_resource type="PackedScene" path="res://scenes/enemy.tscn" id="4_7hwwk"]
+[ext_resource type="PackedScene" uid="uid://c2qwlcm4vtr1o" path="res://mobs/van.tscn" id="6_fa2fv"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6270u"]
 size = Vector2(462, 35)
@@ -54,23 +56,20 @@ shape = SubResource("RectangleShape2D_6270u")
 [node name="Player" parent="." instance=ExtResource("1_pmj6e")]
 position = Vector2(452, 302)
 
-[node name="Camera2D" type="Camera2D" parent="Player"]
-position = Vector2(-2, -61)
+[node name="Scoop" parent="." instance=ExtResource("2_lbmvq")]
+position = Vector2(667, 434)
 
 [node name="Killzone" parent="." instance=ExtResource("2_suf0s")]
+position = Vector2(482, 650)
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Killzone"]
-position = Vector2(572, 387)
 shape = SubResource("WorldBoundaryShape2D_8kowk")
 
-[node name="Enemy" type="Node2D" parent="."]
-position = Vector2(661, 369)
+[node name="Checkpoint" parent="." instance=ExtResource("3_mhlqg")]
+position = Vector2(655, 441)
 
-[node name="RigidBody2D" type="RigidBody2D" parent="Enemy"]
-script = ExtResource("3_a3kah")
+[node name="Enemy" parent="." instance=ExtResource("4_7hwwk")]
+position = Vector2(302, 480)
 
-[node name="Sprite2D" type="Sprite2D" parent="Enemy/RigidBody2D"]
-texture = ExtResource("4_e6dwg")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Enemy/RigidBody2D"]
-shape = SubResource("CapsuleShape2D_6a4e3")
+[node name="Van" parent="." instance=ExtResource("6_fa2fv")]
+position = Vector2(-140, 585)

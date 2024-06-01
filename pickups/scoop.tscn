@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://bk1j06hh033nw"]
+
+[ext_resource type="Script" path="res://pickups/scoop.gd" id="1_hb6d1"]
+[ext_resource type="Texture2D" uid="uid://da00aopoh1hn0" path="res://assets/scoop.png" id="2_cs2hh"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_mop8r"]
+radius = 24.0208
+
+[node name="Scoop" type="Area2D"]
+script = ExtResource("1_hb6d1")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(2, -2)
+texture = ExtResource("2_cs2hh")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_mop8r")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

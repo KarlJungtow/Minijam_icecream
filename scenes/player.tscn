@@ -1,28 +1,76 @@
-[gd_scene load_steps=3 format=3 uid="uid://bjkukdy2ofn8t"]
+[gd_scene load_steps=10 format=3 uid="uid://bjkukdy2ofn8t"]
 
 [ext_resource type="Script" path="res://scenes/player.gd" id="1_miuig"]
+[ext_resource type="Texture2D" uid="uid://c0favpk0lxg1p" path="res://assets/Player.png" id="2_875oh"]
+[ext_resource type="AudioStream" uid="uid://ciyb4jpleh0hu" path="res://sounds/jump1.wav" id="3_x7s2x"]
+[ext_resource type="AudioStream" uid="uid://dtivltqjafkmn" path="res://sounds/jump2.wav" id="4_jbenm"]
+[ext_resource type="AudioStream" uid="uid://cjvm8b12hbbmi" path="res://sounds/die1.wav" id="5_tgbxs"]
+[ext_resource type="AudioStream" uid="uid://cotwq6vpkk7ay" path="res://sounds/die2.wav" id="6_vty3q"]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_lh2sk"]
-radius = 47.0
-height = 154.0
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_1o1e8"]
+radius = 44.0
+height = 170.0
 
-[node name="Player" type="CharacterBody2D"]
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_n1v20"]
+playback_mode = 1
+streams_count = 2
+stream_0/stream = ExtResource("3_x7s2x")
+stream_0/weight = 1.0
+stream_1/stream = ExtResource("4_jbenm")
+stream_1/weight = 1.0
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_facd4"]
+playback_mode = 1
+streams_count = 2
+stream_0/stream = ExtResource("5_tgbxs")
+stream_0/weight = 1.0
+stream_1/stream = ExtResource("6_vty3q")
+stream_1/weight = 1.0
+
+[node name="Player" type="CharacterBody2D" groups=["Player"]]
 script = ExtResource("1_miuig")
 
-[node name="PlaceholderPlayerGraphic" type="Polygon2D" parent="."]
-position = Vector2(-52, -93)
-scale = Vector2(4, 4)
-color = Color(0.62141, 0.843902, 0.884188, 1)
-polygon = PackedVector2Array(12, 6, 7, 10, 7, 15, 9, 17, 9, 21, 5, 23, 3, 28, 3, 35, 4, 41, 7, 42, 17, 42, 23, 40, 25, 34, 22, 25, 18, 21, 15, 22, 16, 18, 20, 17, 19, 9)
-
 [node name="PlayerCollisionShape" type="CollisionShape2D" parent="."]
-position = Vector2(0, 7)
-shape = SubResource("CapsuleShape2D_lh2sk")
+position = Vector2(-1, 2)
+shape = SubResource("CapsuleShape2D_1o1e8")
+
+[node name="FlameThrowerAnchor" type="Node2D" parent="."]
+visible = false
+position = Vector2(1, -31)
+
+[node name="PlaceHolderFlameThrower" type="Polygon2D" parent="FlameThrowerAnchor"]
+position = Vector2(131, -2)
+color = Color(1, 0.278431, 0.345098, 1)
+polygon = PackedVector2Array(-31, -11, -46, -4, -36, 9, -26, 9, -10, 10, 5, 10, 12, 2, -6, 0, 10, -12, -28, -11)
+
+[node name="Flames" type="Node2D" parent="FlameThrowerAnchor"]
+
+[node name="PlayerSprite" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(-26, 6)
+texture = ExtResource("2_875oh")
 
 [node name="PlayerDetectionBox" type="Area2D" parent="."]
 
-[node name="PlayerCollisionShape" type="CollisionShape2D" parent="PlayerDetectionBox"]
-position = Vector2(0, 7)
-shape = SubResource("CapsuleShape2D_lh2sk")
+[node name="PlayerDetectionShape" type="CollisionShape2D" parent="PlayerDetectionBox"]
+position = Vector2(-1, 2)
+shape = SubResource("CapsuleShape2D_1o1e8")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+limit_bottom = 648
+drag_horizontal_enabled = true
+drag_vertical_enabled = true
+drag_left_margin = 0.3
+drag_top_margin = 0.3
+drag_right_margin = 0.3
+drag_bottom_margin = 0.3
+editor_draw_limits = true
+editor_draw_drag_margin = true
+
+[node name="jumps_sounds" type="AudioStreamPlayer" parent="."]
+stream = SubResource("AudioStreamRandomizer_n1v20")
+
+[node name="dying_sounds" type="AudioStreamPlayer" parent="."]
+stream = SubResource("AudioStreamRandomizer_facd4")
 
 [connection signal="area_entered" from="PlayerDetectionBox" to="." method="_on_player_detection_box_area_entered"]
