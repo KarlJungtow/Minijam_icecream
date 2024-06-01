@@ -11,6 +11,7 @@ height = 144.0
 script = ExtResource("1_miuig")
 
 [node name="PlaceholderPlayerGraphic" type="Polygon2D" parent="."]
+visible = false
 position = Vector2(-52, -93)
 scale = Vector2(4, 4)
 color = Color(0.62141, 0.843902, 0.884188, 1)
