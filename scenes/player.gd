@@ -13,6 +13,10 @@ var start_pos: Vector2
 
 func _ready():
 	start_pos = position
+	G.connect("player_died",Callable(self,"die"))
+
+func die():
+	position = start_pos
 
 func _process(delta):
 	coyote_time -= delta
@@ -43,5 +47,5 @@ func _physics_process(delta):
 
 
 func _on_player_detection_box_area_entered(area):
-	if get_tree().get_nodes_in_group("KillZone").has(area):
-		position = start_pos
+	if get_tree().get_nodes_in_group("CheckPoint").has(area):
+		start_pos = area.position
