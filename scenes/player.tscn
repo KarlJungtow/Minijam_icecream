@@ -1,8 +1,6 @@
-[gd_scene load_steps=11 format=3 uid="uid://bjkukdy2ofn8t"]
+[gd_scene load_steps=16 format=3 uid="uid://bjkukdy2ofn8t"]
 
 [ext_resource type="Script" path="res://scenes/player.gd" id="1_miuig"]
-[ext_resource type="Texture2D" uid="uid://c0favpk0lxg1p" path="res://assets/Player.png" id="2_875oh"]
-[ext_resource type="PackedScene" uid="uid://basn1mplc0hxk" path="res://hud/hud.tscn" id="2_yrh88"]
 [ext_resource type="AudioStream" uid="uid://ciyb4jpleh0hu" path="res://sounds/jump1.wav" id="3_x7s2x"]
 [ext_resource type="AudioStream" uid="uid://dtivltqjafkmn" path="res://sounds/jump2.wav" id="4_jbenm"]
 [ext_resource type="AudioStream" uid="uid://cjvm8b12hbbmi" path="res://sounds/die1.wav" id="5_tgbxs"]
@@ -13,7 +11,15 @@
 radius = 33.0
 height = 152.0
 
-[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_n1v20"]
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_vh3kp"]
+playback_mode = 1
+streams_count = 2
+stream_0/stream = ExtResource("5_tgbxs")
+stream_0/weight = 1.0
+stream_1/stream = ExtResource("6_vty3q")
+stream_1/weight = 1.0
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_wiegp"]
 playback_mode = 1
 streams_count = 2
 stream_0/stream = ExtResource("3_x7s2x")
@@ -63,13 +69,6 @@ animations = [{
 "name": &"walk",
 "speed": 5.0
 }]
-[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_facd4"]
-playback_mode = 1
-streams_count = 2
-stream_0/stream = ExtResource("5_tgbxs")
-stream_0/weight = 1.0
-stream_1/stream = ExtResource("6_vty3q")
-stream_1/weight = 1.0
 
 [node name="Player" type="CharacterBody2D" groups=["Player"]]
 script = ExtResource("1_miuig")
@@ -79,8 +78,6 @@ position = Vector2(-1, 2)
 shape = SubResource("CapsuleShape2D_1o1e8")
 
 [node name="FlameThrowerAnchor" type="Node2D" parent="."]
-visible = false
-position = Vector2(1, -31)
 
 [node name="PlaceHolderFlameThrower" type="Polygon2D" parent="FlameThrowerAnchor"]
 position = Vector2(131, -2)
@@ -106,14 +103,11 @@ drag_bottom_margin = 0.3
 editor_draw_limits = true
 editor_draw_drag_margin = true
 
-[node name="Hud" parent="Camera2D" instance=ExtResource("2_yrh88")]
-position = Vector2(2.08165e-12, 2.08165e-12)
+[node name="dying_sounds" type="AudioStreamPlayer" parent="."]
+stream = SubResource("AudioStreamRandomizer_vh3kp")
 
 [node name="jumps_sounds" type="AudioStreamPlayer" parent="."]
-stream = SubResource("AudioStreamRandomizer_n1v20")
-
-[node name="dying_sounds" type="AudioStreamPlayer" parent="."]
-stream = SubResource("AudioStreamRandomizer_facd4")
+stream = SubResource("AudioStreamRandomizer_wiegp")
 
 [node name="PlayerSprite" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
