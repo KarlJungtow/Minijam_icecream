@@ -1,15 +1,20 @@
-[gd_scene load_steps=2 format=3 uid="uid://bjkukdy2ofn8t"]
+[gd_scene load_steps=3 format=3 uid="uid://bjkukdy2ofn8t"]
+
+[ext_resource type="Script" path="res://scenes/player.gd" id="1_miuig"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_lh2sk"]
-radius = 56.0
-height = 186.0
+radius = 47.0
+height = 154.0
 
 [node name="Player" type="CharacterBody2D"]
+script = ExtResource("1_miuig")
 
-[node name="Polygon2D" type="Polygon2D" parent="."]
-color = Color(0.798791, 0.798791, 0.798791, 1)
-polygon = PackedVector2Array(0, 5, 0, 156, 19, 131, 31, 163, 54, 123, 76, 162, 92, 135, 106, 159, 107, 1, 84, -13, 16, -17)
+[node name="PlaceholderPlayerGraphic" type="Polygon2D" parent="."]
+position = Vector2(-52, -93)
+scale = Vector2(4, 4)
+color = Color(0.62141, 0.843902, 0.884188, 1)
+polygon = PackedVector2Array(12, 6, 7, 10, 7, 15, 9, 17, 9, 21, 5, 23, 3, 28, 3, 35, 4, 41, 7, 42, 17, 42, 23, 40, 25, 34, 22, 25, 18, 21, 15, 22, 16, 18, 20, 17, 19, 9)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(53, 70)
+[node name="PlayerCollisionShape" type="CollisionShape2D" parent="."]
+position = Vector2(0, 7)
 shape = SubResource("CapsuleShape2D_lh2sk")
