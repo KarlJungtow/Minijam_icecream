@@ -1,14 +1,131 @@
-[gd_scene load_steps=6 format=3 uid="uid://bqmq5pnphm6yl"]
+[gd_scene load_steps=10 format=3 uid="uid://bqmq5pnphm6yl"]
 
 [ext_resource type="Texture2D" uid="uid://d4d21k2ui8yt3" path="res://assets/slime_green.png" id="1_e6cjc"]
 [ext_resource type="Script" path="res://scripts/enemy.gd" id="1_l5rm7"]
-[ext_resource type="PackedScene" uid="uid://cyft5asqax5y3" path="res://scenes/killzone.tscn" id="2_65l5i"]
+[ext_resource type="PackedScene" uid="uid://oxtfdsfew20n" path="res://scenes/killzone.tscn" id="2_65l5i"]
+[ext_resource type="PackedScene" uid="uid://cqimqaf3tpmob" path="res://scenes/melts.tscn" id="4_3kldw"]
+
+[sub_resource type="Animation" id="Animation_fjk0a"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:scale:x")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(5, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:scale:y")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(5, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/3/type = "bezier"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+
+[sub_resource type="Animation" id="Animation_jgq4n"]
+resource_name = "death"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 0.329876),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(1000, -300)]
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:scale:x")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(5, -0.25, 0, 0.25, 0, 2.08165e-12, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.5)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:scale:y")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(5, -0.25, 0, 0.25, 0, 2.08165e-12, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.5)
+}
+tracks/3/type = "bezier"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 3, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.5)
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("CPUParticles2D:emitting")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_xu7u1"]
+_data = {
+"RESET": SubResource("Animation_fjk0a"),
+"death": SubResource("Animation_jgq4n")
+}
+
+[sub_resource type="Curve" id="Curve_ts6qo"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.56231, 0.657106), -1.33208, -1.33208, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_edsvr"]
 size = Vector2(10, 8)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_7wgki"]
-size = Vector2(28, 30)
 
 [node name="Enemy" type="Area2D" groups=["enemy"]]
 script = ExtResource("1_l5rm7")
@@ -17,6 +134,25 @@ script = ExtResource("1_l5rm7")
 texture_filter = 1
 scale = Vector2(5, 5)
 texture = ExtResource("1_e6cjc")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Sprite2D"]
+libraries = {
+"": SubResource("AnimationLibrary_xu7u1")
+}
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="Sprite2D"]
+position = Vector2(2.08165e-12, 5)
+emitting = false
+amount = 40
+lifetime = 0.5
+one_shot = true
+randomness = 0.18
+emission_shape = 1
+emission_sphere_radius = 16.57
+scale_amount_min = 5.0
+scale_amount_max = 15.0
+scale_amount_curve = SubResource("Curve_ts6qo")
+color = Color(0.427451, 0.635294, 0, 1)
 
 [node name="Killzone" parent="." instance=ExtResource("2_65l5i")]
 
@@ -27,8 +163,49 @@ shape = SubResource("RectangleShape2D_edsvr")
 target_position = Vector2(-32, 0)
 
 [node name="RayCast2DRight" type="RayCast2D" parent="."]
-target_position = Vector2(32, 0)
+target_position = Vector2(22, 0)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-3, 1)
-shape = SubResource("RectangleShape2D_7wgki")
+[node name="MeltingParts" type="Node2D" parent="."]
+
+[node name="Melts" parent="MeltingParts" instance=ExtResource("4_3kldw")]
+position = Vector2(48, -5)
+
+[node name="Melts2" parent="MeltingParts" instance=ExtResource("4_3kldw")]
+position = Vector2(68, -5)
+
+[node name="Melts3" parent="MeltingParts" instance=ExtResource("4_3kldw")]
+position = Vector2(88, -5)
+
+[node name="Melts4" parent="MeltingParts" instance=ExtResource("4_3kldw")]
+position = Vector2(109, -5)
+
+[node name="Melts5" parent="MeltingParts" instance=ExtResource("4_3kldw")]
+position = Vector2(47, 16)
+
+[node name="Melts6" parent="MeltingParts" instance=ExtResource("4_3kldw")]
+position = Vector2(67, 16)
+
+[node name="Melts7" parent="MeltingParts" instance=ExtResource("4_3kldw")]
+position = Vector2(87, 15)
+
+[node name="Melts8" parent="MeltingParts" instance=ExtResource("4_3kldw")]
+position = Vector2(108, 15)
+rotation = 0.012737
+
+[node name="Melts9" parent="MeltingParts" instance=ExtResource("4_3kldw")]
+position = Vector2(108, 35)
+rotation = 0.012737
+
+[node name="Melts10" parent="MeltingParts" instance=ExtResource("4_3kldw")]
+position = Vector2(87, 31)
+rotation = -0.0435834
+
+[node name="Melts11" parent="MeltingParts" instance=ExtResource("4_3kldw")]
+position = Vector2(66, 31)
+rotation = -0.0435834
+
+[node name="Melts12" parent="MeltingParts" instance=ExtResource("4_3kldw")]
+position = Vector2(46, 32)
+rotation = -0.0435834
+
+[connection signal="area_entered" from="Killzone" to="." method="_on_killzone_area_entered"]
