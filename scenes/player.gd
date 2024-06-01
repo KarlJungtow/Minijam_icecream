@@ -2,8 +2,7 @@ extends CharacterBody2D
 
 
 const SPEED = 800.0
-const JUMP_VELOCITY = -800.0
-
+const JUMP_VELOCITY = -600.0
 
 const flame_scene = preload("res://scenes/flame.tscn")
 
@@ -58,13 +57,19 @@ func _physics_process(delta):
 	
 	var direction = Input.get_axis("move-left", "move-right")
 	if direction > 0: 
-		sprite_2d.flip_h = true
+		sprite_2d.scale.x = -1
 	elif direction < 0:
-		sprite_2d.flip_h = false
+		sprite_2d.scale.x = 1
 	if direction:
 		velocity.x = direction * SPEED
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
+	
+	if abs(velocity.x) >= 0.01 and coyote_time >= 0.0:
+		if $PlayerSprite.is_playing() == false:
+			$PlayerSprite.play("walk")
+	else:
+		$PlayerSprite.stop()
 	
 	move_and_slide()
 
