@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 
-const SPEED = 600.0
+const SPEED = 800.0
 const JUMP_VELOCITY = -400.0
 
 const flame_scene = preload("res://scenes/flame.tscn")
@@ -19,6 +19,7 @@ var start_pos: Vector2
 func _ready():
 	start_pos = position
 	G.connect("player_died",Callable(self,"die"))
+	get_flame_thrower()
 
 func get_flame_thrower():
 	$FlameThrowerAnchor.show()
@@ -34,6 +35,7 @@ func die():
 	tween.tween_callback(respawn)
 
 func _process(delta):
+	print(G.score)
 	coyote_time -= delta
 	late_jump_time -= delta
 
@@ -68,7 +70,7 @@ func _physics_process(delta):
 func _input(event):
 	if event is InputEventMouseMotion:
 		if using_flamethrower:
-			$FlameThrowerAnchor.look_at(event.position)
+			$FlameThrowerAnchor.look_at(get_global_mouse_position())
 	if event.is_action_pressed("click"):
 		if using_flamethrower:
 			
