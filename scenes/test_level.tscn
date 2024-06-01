@@ -1,10 +1,11 @@
-[gd_scene load_steps=9 format=3 uid="uid://jqr4114xgrhx"]
+[gd_scene load_steps=10 format=3 uid="uid://jqr4114xgrhx"]
 
 [ext_resource type="PackedScene" uid="uid://bjkukdy2ofn8t" path="res://scenes/player.tscn" id="1_pmj6e"]
 [ext_resource type="PackedScene" uid="uid://bk1j06hh033nw" path="res://pickups/scoop.tscn" id="2_lbmvq"]
-[ext_resource type="PackedScene" uid="uid://cyft5asqax5y3" path="res://scenes/killzone.tscn" id="2_suf0s"]
+[ext_resource type="PackedScene" uid="uid://oxtfdsfew20n" path="res://scenes/killzone.tscn" id="2_suf0s"]
 [ext_resource type="PackedScene" path="res://scenes/checkpoint.tscn" id="3_mhlqg"]
 [ext_resource type="PackedScene" path="res://scenes/enemy.tscn" id="4_7hwwk"]
+[ext_resource type="PackedScene" uid="uid://dtlkale21ltm6" path="res://scenes/collectable.tscn" id="6_7f4ot"]
 [ext_resource type="PackedScene" uid="uid://c2qwlcm4vtr1o" path="res://mobs/van.tscn" id="6_fa2fv"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6270u"]
@@ -73,3 +74,6 @@ position = Vector2(302, 480)
 
 [node name="Van" parent="." instance=ExtResource("6_fa2fv")]
 position = Vector2(-140, 585)
+
+[node name="Collectable" parent="." instance=ExtResource("6_7f4ot")]
+position = Vector2(709, 382)
