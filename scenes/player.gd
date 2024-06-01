@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 
-const SPEED = 600.0
+const SPEED = 800.0
 const JUMP_VELOCITY = -400.0
 
 const flame_scene = preload("res://scenes/flame.tscn")
@@ -19,6 +19,7 @@ var start_pos: Vector2
 func _ready():
 	start_pos = position
 	G.connect("player_died",Callable(self,"die"))
+	get_flame_thrower()
 
 func get_flame_thrower():
 	$FlameThrowerAnchor.show()
