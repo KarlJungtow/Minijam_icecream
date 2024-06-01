@@ -2,10 +2,10 @@
 
 [ext_resource type="PackedScene" uid="uid://bjkukdy2ofn8t" path="res://scenes/player.tscn" id="1_pmj6e"]
 [ext_resource type="PackedScene" uid="uid://bk1j06hh033nw" path="res://pickups/scoop.tscn" id="2_lbmvq"]
-[ext_resource type="PackedScene" uid="uid://cyft5asqax5y3" path="res://scenes/killzone.tscn" id="2_suf0s"]
+[ext_resource type="PackedScene" uid="uid://oxtfdsfew20n" path="res://scenes/killzone.tscn" id="2_suf0s"]
 [ext_resource type="PackedScene" uid="uid://hbnmbi33fnp0" path="res://scenes/checkpoint.tscn" id="3_mhlqg"]
-[ext_resource type="PackedScene" uid="uid://ohhs0wlyc72p" path="res://scenes/enemy.tscn" id="4_7hwwk"]
-[ext_resource type="PackedScene" path="res://scenes/collectable.tscn" id="6_7f4ot"]
+[ext_resource type="PackedScene" uid="uid://bqmq5pnphm6yl" path="res://scenes/enemy.tscn" id="4_7hwwk"]
+[ext_resource type="PackedScene" uid="uid://d3e1vqwpaqdx3" path="res://scenes/collectable.tscn" id="6_7f4ot"]
 [ext_resource type="PackedScene" uid="uid://c2qwlcm4vtr1o" path="res://mobs/van.tscn" id="6_fa2fv"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6270u"]
@@ -53,11 +53,8 @@ shape = SubResource("RectangleShape2D_6270u")
 [node name="Player" parent="." instance=ExtResource("1_pmj6e")]
 position = Vector2(452, 302)
 
-[node name="Scoop" parent="." instance=ExtResource("2_lbmvq")]
-position = Vector2(667, 434)
-
 [node name="Killzone" parent="." instance=ExtResource("2_suf0s")]
-position = Vector2(482, 650)
+position = Vector2(485, 645)
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Killzone"]
 shape = SubResource("WorldBoundaryShape2D_8kowk")
@@ -65,11 +62,18 @@ shape = SubResource("WorldBoundaryShape2D_8kowk")
 [node name="Checkpoint" parent="." instance=ExtResource("3_mhlqg")]
 position = Vector2(655, 441)
 
-[node name="Enemy" parent="." instance=ExtResource("4_7hwwk")]
-position = Vector2(302, 480)
-
 [node name="Van" parent="." instance=ExtResource("6_fa2fv")]
 position = Vector2(-140, 585)
 
-[node name="Collectable" parent="." instance=ExtResource("6_7f4ot")]
-position = Vector2(709, 382)
+[node name="Enemies" type="Node" parent="."]
+
+[node name="Enemy" parent="Enemies" instance=ExtResource("4_7hwwk")]
+position = Vector2(305, 477)
+
+[node name="Collectables" type="Node" parent="."]
+
+[node name="Scoop" parent="Collectables" instance=ExtResource("2_lbmvq")]
+position = Vector2(670, 431)
+
+[node name="Collectable" parent="Collectables" instance=ExtResource("6_7f4ot")]
+position = Vector2(1379, 447)
