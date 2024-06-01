@@ -48,6 +48,9 @@ func _physics_process(delta):
 		velocity.y += gravity * delta
 	if Input.is_action_pressed("attack"):
 		attack()
+	if $PlayerSprite.is_playing() == false :
+		$PlayerSprite.stop()
+		attacking = false
 
 	if $PlayerSprite.is_playing() == false:
 		attacking = false
@@ -96,7 +99,7 @@ func _input(event):
 		if using_flamethrower:
 			
 			var instance = flame_scene.instantiate()
-			instance.global_position = $FlameThrowerAnchor/PlaceHolderFlameThrower.global_position
+			instance.global_position = $FlameThrowerAnchor/FlamethrowerSprite.global_position
 			instance.rotation = $FlameThrowerAnchor.rotation
 			$FlameThrowerAnchor/Flames.add_child(instance)
 			

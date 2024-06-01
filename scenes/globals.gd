@@ -19,7 +19,7 @@ func score_aa():
 	if score == SCOOPS_NEEDED:
 		var new_van = VAN.instantiate()
 		add_child(new_van)
-		new_van.position = Vector2(0, 400)  # Set the desired position here
+		new_van.position = Vector2(0, 80)  # Set the desired position here
 		score = 0
 
 func load_level(id:int):

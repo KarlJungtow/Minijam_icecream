@@ -93,7 +93,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_s84ns")
 }],
-"loop": true,
+"loop": false,
 "name": &"spoon_attack",
 "speed": 15.0
 }, {
