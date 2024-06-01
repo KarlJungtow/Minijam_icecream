@@ -12,5 +12,4 @@ func _process(delta):
 
 
 func _on_body_entered(body):
-	print("Player Died!")
 	G.player_died.emit()

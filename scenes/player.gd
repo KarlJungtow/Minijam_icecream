@@ -8,7 +8,7 @@ const flame_scene = preload("res://scenes/flame.tscn")
 
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
-var using_flamethrower: bool = true
+var using_flamethrower: bool = false
 
 var coyote_time = 0.0
 var late_jump_time = 0.0
@@ -19,6 +19,10 @@ var start_pos: Vector2
 func _ready():
 	start_pos = position
 	G.connect("player_died",Callable(self,"die"))
+
+func get_flame_thrower():
+	$FlameThrowerAnchor.show()
+	using_flamethrower = true
 
 func die():
 	position = start_pos
@@ -69,4 +73,3 @@ func _input(event):
 func _on_player_detection_box_area_entered(area):
 	if get_tree().get_nodes_in_group("CheckPoint").has(area):
 		start_pos = area.position
-		print("ajdoi")
