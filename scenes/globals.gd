@@ -2,6 +2,7 @@ extends Node
 
 signal pickup_scoop
 signal player_died
+signal handle_collectable
 
 func _ready():
 	pass
