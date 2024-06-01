@@ -14,6 +14,7 @@ var coyote_time = 0.0
 var late_jump_time = 0.0
 
 var start_pos: Vector2
+@onready var sprite_2d = $Sprite2D
 
 func _ready():
 	start_pos = position
@@ -42,11 +43,15 @@ func _physics_process(delta):
 	
 	
 	var direction = Input.get_axis("move-left", "move-right")
+	if direction > 0: 
+		sprite_2d.flip_h = true
+	elif direction < 0:
+		sprite_2d.flip_h = false
 	if direction:
 		velocity.x = direction * SPEED
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
-
+	
 	move_and_slide()
 
 func _input(event):
