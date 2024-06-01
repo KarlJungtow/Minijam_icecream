@@ -6,7 +6,7 @@ const JUMP_VELOCITY = -600.0
 
 const flame_scene = preload("res://scenes/flame.tscn")
 
-var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
+var gravity = 1.5*ProjectSettings.get_setting("physics/2d/default_gravity")
 
 var using_flamethrower: bool = false
 
@@ -17,6 +17,7 @@ var start_pos: Vector2
 @onready var sprite_2d = $PlayerSprite
 
 func _ready():
+	get_flame_thrower()
 	start_pos = position
 	G.connect("player_died",Callable(self,"die"))
 	get_flame_thrower()
@@ -83,7 +84,10 @@ func _input(event):
 			instance.global_position = $FlameThrowerAnchor/PlaceHolderFlameThrower.global_position
 			instance.rotation = $FlameThrowerAnchor.rotation
 			$FlameThrowerAnchor/Flames.add_child(instance)
-
+			
+			move_and_slide()
+			
+			
 func _on_player_detection_box_area_entered(area):
 	if get_tree().get_nodes_in_group("CheckPoint").has(area):
 		start_pos = area.position
