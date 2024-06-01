@@ -19,6 +19,7 @@ var start_pos: Vector2
 @onready var sprite_2d = $PlayerSprite
 
 func _ready():
+	get_flame_thrower()
 	start_pos = position
 	G.connect("player_died",Callable(self,"die"))
 	get_flame_thrower()
