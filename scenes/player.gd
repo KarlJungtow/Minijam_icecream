@@ -36,8 +36,7 @@ func respawn():
 func die():
 	$dying_sounds.play()
 	var tween = get_tree().create_tween()
-	tween.tween_interval(1.0)
-	tween.tween_callback(respawn)
+	respawn()
 
 func _process(delta):
 	coyote_time -= delta
