@@ -11,7 +11,7 @@ var current_level = 1
 
 func _ready():
 	G.connect("handle_collectable",Callable(self,"score_aa"))
-	#load_level(current_level)
+	load_level(current_level)
 
 func score_aa():
 	score += 1

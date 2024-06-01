@@ -22,6 +22,7 @@ var start_pos: Vector2
 
 func _ready():
 	start_pos = position
+	get_flame_thrower()
 	G.connect("player_died",Callable(self,"die"))
 
 
