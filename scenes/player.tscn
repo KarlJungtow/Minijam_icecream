@@ -11,20 +11,20 @@
 radius = 44.0
 height = 170.0
 
-[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_n1v20"]
-playback_mode = 1
-streams_count = 2
-stream_0/stream = ExtResource("3_x7s2x")
-stream_0/weight = 1.0
-stream_1/stream = ExtResource("4_jbenm")
-stream_1/weight = 1.0
-
-[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_facd4"]
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_vh3kp"]
 playback_mode = 1
 streams_count = 2
 stream_0/stream = ExtResource("5_tgbxs")
 stream_0/weight = 1.0
 stream_1/stream = ExtResource("6_vty3q")
+stream_1/weight = 1.0
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_wiegp"]
+playback_mode = 1
+streams_count = 2
+stream_0/stream = ExtResource("3_x7s2x")
+stream_0/weight = 1.0
+stream_1/stream = ExtResource("4_jbenm")
 stream_1/weight = 1.0
 
 [node name="Player" type="CharacterBody2D" groups=["Player"]]
@@ -35,8 +35,6 @@ position = Vector2(-1, 2)
 shape = SubResource("CapsuleShape2D_1o1e8")
 
 [node name="FlameThrowerAnchor" type="Node2D" parent="."]
-visible = false
-position = Vector2(1, -31)
 
 [node name="PlaceHolderFlameThrower" type="Polygon2D" parent="FlameThrowerAnchor"]
 position = Vector2(131, -2)
@@ -67,10 +65,10 @@ drag_bottom_margin = 0.3
 editor_draw_limits = true
 editor_draw_drag_margin = true
 
-[node name="jumps_sounds" type="AudioStreamPlayer" parent="."]
-stream = SubResource("AudioStreamRandomizer_n1v20")
-
 [node name="dying_sounds" type="AudioStreamPlayer" parent="."]
-stream = SubResource("AudioStreamRandomizer_facd4")
+stream = SubResource("AudioStreamRandomizer_vh3kp")
+
+[node name="jumps_sounds" type="AudioStreamPlayer" parent="."]
+stream = SubResource("AudioStreamRandomizer_wiegp")
 
 [connection signal="area_entered" from="PlayerDetectionBox" to="." method="_on_player_detection_box_area_entered"]
