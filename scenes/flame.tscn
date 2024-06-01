@@ -1,59 +1,22 @@
-[gd_scene load_steps=10 format=3 uid="uid://dw56be4cd5nt1"]
+[gd_scene load_steps=3 format=3 uid="uid://bf2evajaltlv8"]
 
 [ext_resource type="Script" path="res://scenes/flame.gd" id="1_3euuv"]
-[ext_resource type="Texture2D" uid="uid://vley5pyiflol" path="res://assets/fire.png" id="2_v425i"]
-[ext_resource type="Texture2D" uid="uid://bqga5d28nekrr" path="res://assets/fire-trail.png" id="3_g6q4v"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_fvjf8"]
-radius = 47.1699
-
-[sub_resource type="Curve" id="Curve_na2yn"]
-_data = [Vector2(0, 0.41978), 0.0, 0.0, 0, 0, Vector2(0.216578, 0), -14.2476, 0.0, 0, 0]
-point_count = 2
-
-[sub_resource type="CurveTexture" id="CurveTexture_qk62h"]
-curve = SubResource("Curve_na2yn")
-
-[sub_resource type="Curve" id="Curve_7d5mv"]
-_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.441176, 0.745055), -2.14429, -2.14429, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
-point_count = 3
-
-[sub_resource type="CurveTexture" id="CurveTexture_yaoh7"]
-curve = SubResource("Curve_7d5mv")
-
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_xloyp"]
-particle_flag_disable_z = true
-angle_min = -200.0
-angle_max = -200.0
-direction = Vector3(-1, 0, 0)
-initial_velocity_min = 179.43
-initial_velocity_max = 180.18
-gravity = Vector3(0, 98, 0)
-scale_curve = SubResource("CurveTexture_yaoh7")
-emission_curve = SubResource("CurveTexture_qk62h")
+radius = 23.7697
 
 [node name="Flame" type="Area2D"]
 top_level = true
 script = ExtResource("1_3euuv")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(3, -1)
 shape = SubResource("CircleShape2D_fvjf8")
 
+[node name="Polygon2D" type="Polygon2D" parent="."]
+color = Color(1, 0, 0, 1)
+polygon = PackedVector2Array(-8, -12, 3, -26, 17, -11, 15, -5, 5, -4, 17, 5, 3, 7, 10, 14, -8, 15, -22, 12, -16, 6, -19, 0, -16, -3, -21, -16)
+
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
-rect = Rect2(-200, -200, 400, 400)
 
-[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
-texture_filter = 1
-position = Vector2(-46, -4)
-amount = 32
-process_material = SubResource("ParticleProcessMaterial_xloyp")
-texture = ExtResource("3_g6q4v")
-
-[node name="Fire" type="Sprite2D" parent="."]
-texture_filter = 1
-scale = Vector2(2, 2)
-texture = ExtResource("2_v425i")
-flip_h = true
-
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
 [connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]
