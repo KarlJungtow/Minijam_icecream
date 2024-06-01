@@ -14,3 +14,8 @@ func _process(delta):
 func _on_button_pressed():
 	G.change_level("res://scenes/test_level.tscn")
 	pass # Replace with function body.
+
+
+func _on_button_3_pressed():
+	G.change_level("res://scenes/intro.tscn")
+	pass # Replace with function body.
