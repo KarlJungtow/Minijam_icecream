@@ -9,8 +9,8 @@ func _ready():
 	G.connect("handle_collectable",Callable(self,"score_aa"))
 
 func score_aa():
-	print(score)
 	score += 1
+	print("New score: " + str(score))
 	
 func change_level(path):
 	get_tree().change_scene_to_file(path)

@@ -35,7 +35,6 @@ func die():
 	tween.tween_callback(respawn)
 
 func _process(delta):
-	print(G.score)
 	coyote_time -= delta
 	late_jump_time -= delta
 
