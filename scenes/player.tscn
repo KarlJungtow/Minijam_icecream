@@ -1,10 +1,11 @@
-[gd_scene load_steps=3 format=3 uid="uid://bjkukdy2ofn8t"]
+[gd_scene load_steps=4 format=3 uid="uid://bjkukdy2ofn8t"]
 
 [ext_resource type="Script" path="res://scenes/player.gd" id="1_miuig"]
+[ext_resource type="Texture2D" uid="uid://c0favpk0lxg1p" path="res://assets/Player.png" id="2_875oh"]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_lh2sk"]
-radius = 47.0
-height = 154.0
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_1o1e8"]
+radius = 38.0
+height = 144.0
 
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_miuig")
@@ -17,4 +18,8 @@ polygon = PackedVector2Array(12, 6, 7, 10, 7, 15, 9, 17, 9, 21, 5, 23, 3, 28, 3,
 
 [node name="PlayerCollisionShape" type="CollisionShape2D" parent="."]
 position = Vector2(0, 7)
-shape = SubResource("CapsuleShape2D_lh2sk")
+shape = SubResource("CapsuleShape2D_1o1e8")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-26, 6)
+texture = ExtResource("2_875oh")
