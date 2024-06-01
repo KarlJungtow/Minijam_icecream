@@ -97,7 +97,7 @@ func _input(event):
 		if using_flamethrower:
 			
 			var instance = flame_scene.instantiate()
-			instance.global_position = $FlameThrowerAnchor/Flamethrower.global_position
+			instance.global_position = $FlameThrowerAnchor/PlaceHolderFlameThrower.global_position
 			instance.rotation = $FlameThrowerAnchor.rotation
 			$FlameThrowerAnchor/Flames.add_child(instance)
 			
