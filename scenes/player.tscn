@@ -9,7 +9,7 @@
 [ext_resource type="AudioStream" uid="uid://cotwq6vpkk7ay" path="res://sounds/die2.wav" id="6_vty3q"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_1o1e8"]
-radius = 28.0
+radius = 33.0
 height = 152.0
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_vh3kp"]
@@ -114,8 +114,6 @@ stream = SubResource("AudioStreamRandomizer_wiegp")
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_goh6h")
 animation = &"walk"
-frame = 4
-frame_progress = 0.965231
 offset = Vector2(-36, 4)
 
 [connection signal="area_entered" from="PlayerDetectionBox" to="." method="_on_player_detection_box_area_entered"]
