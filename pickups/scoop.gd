@@ -8,7 +8,15 @@ func _ready():
 func _process(delta):
 	pass
 
+
+
 func _on_body_entered(body):
 	if body.is_in_group("Player"):
 		G.handle_collectable.emit()
+		$AnimationPlayer.play("death")
+		$Sprite2D/CPUParticles2D.emitting = true
+
+
+func _on_animation_player_animation_finished(anim_name: StringName) -> void:
+	if anim_name == "death":
 		queue_free()
