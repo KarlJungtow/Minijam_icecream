@@ -13,14 +13,14 @@ var using_flamethrower: bool = false
 var coyote_time = 0.0
 var late_jump_time = 0.0
 
+var attacking = false
 var start_pos: Vector2
 @onready var sprite_2d = $PlayerSprite
 
 func _ready():
-	get_flame_thrower()
 	start_pos = position
 	G.connect("player_died",Callable(self,"die"))
-	get_flame_thrower()
+
 
 func get_flame_thrower():
 	$FlameThrowerAnchor.show()
@@ -43,7 +43,13 @@ func _physics_process(delta):
 	
 	if not is_on_floor():
 		velocity.y += gravity * delta
-
+	if Input.is_action_pressed("attack"):
+		print("Attack")
+		if not using_flamethrower:
+			$PlayerSprite.play("spoon_attack")
+			attacking = true
+	if $PlayerSprite.is_playing() == false:
+		attacking = false
 	if Input.is_action_just_pressed("jump"):
 		$jumps_sounds.play()
 		late_jump_time = 0.1
@@ -66,10 +72,10 @@ func _physics_process(delta):
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 	
 	if abs(velocity.x) >= 0.01 and coyote_time >= 0.0:
-		if $PlayerSprite.is_playing() == false:
+		if $PlayerSprite.is_playing() == false :
 			$PlayerSprite.play("walk")
-	else:
-		$PlayerSprite.stop()
+	elif not attacking:
+			$PlayerSprite.stop()
 	
 	move_and_slide()
 
@@ -86,7 +92,7 @@ func _input(event):
 			$FlameThrowerAnchor/Flames.add_child(instance)
 			
 			move_and_slide()
-			
+
 			
 func _on_player_detection_box_area_entered(area):
 	if get_tree().get_nodes_in_group("CheckPoint").has(area):
