@@ -1,9 +1,24 @@
-[gd_scene load_steps=10 format=3 uid="uid://bqmq5pnphm6yl"]
+[gd_scene load_steps=25 format=3 uid="uid://bqmq5pnphm6yl"]
 
 [ext_resource type="Texture2D" uid="uid://d4d21k2ui8yt3" path="res://assets/slime_green.png" id="1_e6cjc"]
 [ext_resource type="Script" path="res://scripts/enemy.gd" id="1_l5rm7"]
 [ext_resource type="PackedScene" uid="uid://oxtfdsfew20n" path="res://scenes/killzone.tscn" id="2_65l5i"]
 [ext_resource type="PackedScene" uid="uid://cqimqaf3tpmob" path="res://scenes/melts.tscn" id="4_3kldw"]
+[ext_resource type="Texture2D" uid="uid://cjpqy0cweb111" path="res://assets/ChocolateEnemy/tile001.png" id="5_ja66h"]
+[ext_resource type="Texture2D" uid="uid://vy47hp7m4miw" path="res://assets/ChocolateEnemy/tile002.png" id="6_0qe42"]
+[ext_resource type="Texture2D" uid="uid://dcfrgm3780620" path="res://assets/ChocolateEnemy/tile003.png" id="7_nu22k"]
+[ext_resource type="Texture2D" uid="uid://d0v7e2baeyal0" path="res://assets/ChocolateEnemy/tile004.png" id="8_bpagm"]
+[ext_resource type="Texture2D" uid="uid://bdt6h00x2o5aq" path="res://assets/ChocolateEnemy/tile005.png" id="9_he38k"]
+[ext_resource type="Texture2D" uid="uid://co0nn2u0stf6t" path="res://assets/ChocolateEnemy/tile006.png" id="10_raupk"]
+[ext_resource type="Texture2D" uid="uid://bxf51ubtm2g42" path="res://assets/ChocolateEnemy/tile007.png" id="11_4l7fy"]
+[ext_resource type="Texture2D" uid="uid://iyqpxqva6jex" path="res://assets/ChocolateEnemy/tile011.png" id="12_irmle"]
+[ext_resource type="Texture2D" uid="uid://bhnso4xx4eipr" path="res://assets/ChocolateEnemy/tile010.png" id="13_hn0gg"]
+[ext_resource type="Texture2D" uid="uid://blx5u0cwsgw46" path="res://assets/ChocolateEnemy/tile009.png" id="14_5ssib"]
+[ext_resource type="Texture2D" uid="uid://ddlrk2deq5750" path="res://assets/ChocolateEnemy/tile008.png" id="15_8ni27"]
+[ext_resource type="Texture2D" uid="uid://dctqjf6aehd6s" path="res://assets/ChocolateEnemy/tile012.png" id="16_5i8d5"]
+[ext_resource type="Texture2D" uid="uid://bdpw10qjwb5ds" path="res://assets/ChocolateEnemy/tile013.png" id="17_amrqi"]
+[ext_resource type="Texture2D" uid="uid://clmypopqig4gc" path="res://assets/ChocolateEnemy/tile014.png" id="18_2lenu"]
+[ext_resource type="Texture2D" uid="uid://cok5y6hnechac" path="res://assets/ChocolateEnemy/tile015.png" id="19_23org"]
 
 [sub_resource type="Animation" id="Animation_fjk0a"]
 length = 0.001
@@ -171,41 +186,110 @@ target_position = Vector2(22, 0)
 position = Vector2(48, -5)
 
 [node name="Melts2" parent="MeltingParts" instance=ExtResource("4_3kldw")]
-position = Vector2(68, -5)
+position = Vector2(67, -5)
+
+[node name="Sprite2D" parent="MeltingParts/Melts2/Area2D" index="1"]
+texture = ExtResource("5_ja66h")
 
 [node name="Melts3" parent="MeltingParts" instance=ExtResource("4_3kldw")]
 position = Vector2(88, -5)
 
+[node name="Sprite2D" parent="MeltingParts/Melts3/Area2D" index="1"]
+texture = ExtResource("6_0qe42")
+
 [node name="Melts4" parent="MeltingParts" instance=ExtResource("4_3kldw")]
 position = Vector2(109, -5)
 
+[node name="Sprite2D" parent="MeltingParts/Melts4/Area2D" index="1"]
+texture = ExtResource("7_nu22k")
+
 [node name="Melts5" parent="MeltingParts" instance=ExtResource("4_3kldw")]
-position = Vector2(47, 16)
+position = Vector2(48, 16)
+
+[node name="Sprite2D" parent="MeltingParts/Melts5/Area2D" index="1"]
+texture = ExtResource("8_bpagm")
 
 [node name="Melts6" parent="MeltingParts" instance=ExtResource("4_3kldw")]
-position = Vector2(67, 16)
+position = Vector2(68, 16)
+
+[node name="Sprite2D" parent="MeltingParts/Melts6/Area2D" index="1"]
+texture = ExtResource("9_he38k")
 
 [node name="Melts7" parent="MeltingParts" instance=ExtResource("4_3kldw")]
-position = Vector2(87, 15)
+position = Vector2(88, 16)
+
+[node name="Sprite2D" parent="MeltingParts/Melts7/Area2D" index="1"]
+texture = ExtResource("10_raupk")
 
 [node name="Melts8" parent="MeltingParts" instance=ExtResource("4_3kldw")]
-position = Vector2(108, 15)
-rotation = 0.012737
+position = Vector2(109, 15)
+
+[node name="Sprite2D" parent="MeltingParts/Melts8/Area2D" index="1"]
+texture = ExtResource("11_4l7fy")
 
 [node name="Melts9" parent="MeltingParts" instance=ExtResource("4_3kldw")]
-position = Vector2(108, 35)
-rotation = 0.012737
+position = Vector2(109, 36)
+
+[node name="Sprite2D" parent="MeltingParts/Melts9/Area2D" index="1"]
+texture = ExtResource("12_irmle")
 
 [node name="Melts10" parent="MeltingParts" instance=ExtResource("4_3kldw")]
-position = Vector2(87, 31)
-rotation = -0.0435834
+position = Vector2(88, 36)
+
+[node name="Sprite2D" parent="MeltingParts/Melts10/Area2D" index="1"]
+texture = ExtResource("13_hn0gg")
 
 [node name="Melts11" parent="MeltingParts" instance=ExtResource("4_3kldw")]
-position = Vector2(66, 31)
-rotation = -0.0435834
+position = Vector2(67, 36)
+
+[node name="Sprite2D" parent="MeltingParts/Melts11/Area2D" index="1"]
+texture = ExtResource("14_5ssib")
 
 [node name="Melts12" parent="MeltingParts" instance=ExtResource("4_3kldw")]
-position = Vector2(46, 32)
-rotation = -0.0435834
+position = Vector2(48, 36)
+
+[node name="Sprite2D" parent="MeltingParts/Melts12/Area2D" index="1"]
+texture = ExtResource("15_8ni27")
+
+[node name="Melts13" parent="MeltingParts" instance=ExtResource("4_3kldw")]
+position = Vector2(48, 56)
+
+[node name="Sprite2D" parent="MeltingParts/Melts13/Area2D" index="1"]
+texture = ExtResource("16_5i8d5")
+
+[node name="Melts14" parent="MeltingParts" instance=ExtResource("4_3kldw")]
+position = Vector2(67, 56)
+
+[node name="Sprite2D" parent="MeltingParts/Melts14/Area2D" index="1"]
+texture = ExtResource("17_amrqi")
+
+[node name="Melts15" parent="MeltingParts" instance=ExtResource("4_3kldw")]
+position = Vector2(88, 56)
+
+[node name="Sprite2D" parent="MeltingParts/Melts15/Area2D" index="1"]
+texture = ExtResource("18_2lenu")
+
+[node name="Melts16" parent="MeltingParts" instance=ExtResource("4_3kldw")]
+position = Vector2(109, 56)
+
+[node name="Sprite2D" parent="MeltingParts/Melts16/Area2D" index="1"]
+texture = ExtResource("19_23org")
 
 [connection signal="area_entered" from="Killzone" to="." method="_on_killzone_area_entered"]
+
+[editable path="MeltingParts/Melts"]
+[editable path="MeltingParts/Melts2"]
+[editable path="MeltingParts/Melts3"]
+[editable path="MeltingParts/Melts4"]
+[editable path="MeltingParts/Melts5"]
+[editable path="MeltingParts/Melts6"]
+[editable path="MeltingParts/Melts7"]
+[editable path="MeltingParts/Melts8"]
+[editable path="MeltingParts/Melts9"]
+[editable path="MeltingParts/Melts10"]
+[editable path="MeltingParts/Melts11"]
+[editable path="MeltingParts/Melts12"]
+[editable path="MeltingParts/Melts13"]
+[editable path="MeltingParts/Melts14"]
+[editable path="MeltingParts/Melts15"]
+[editable path="MeltingParts/Melts16"]
