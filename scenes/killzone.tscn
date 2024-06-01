@@ -1,5 +1,10 @@
-[gd_scene format=3 uid="uid://oxtfdsfew20n"]
+[gd_scene load_steps=2 format=3 uid="uid://oxtfdsfew20n"]
 
-[node name="Killzone" type="Area2D"]
+[ext_resource type="Script" path="res://scripts/killzone.gd" id="1_mp1cr"]
+
+[node name="Killzone" type="Area2D" groups=["KillZone"]]
+script = ExtResource("1_mp1cr")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
