@@ -64,3 +64,4 @@ func _input(event):
 func _on_player_detection_box_area_entered(area):
 	if get_tree().get_nodes_in_group("CheckPoint").has(area):
 		start_pos = area.position
+		print("ajdoi")
