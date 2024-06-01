@@ -1,15 +1,16 @@
-[gd_scene load_steps=10 format=3 uid="uid://bjkukdy2ofn8t"]
+[gd_scene load_steps=23 format=3 uid="uid://bjkukdy2ofn8t"]
 
 [ext_resource type="Script" path="res://scenes/player.gd" id="1_miuig"]
-[ext_resource type="Texture2D" uid="uid://c0favpk0lxg1p" path="res://assets/Player.png" id="2_875oh"]
 [ext_resource type="AudioStream" uid="uid://ciyb4jpleh0hu" path="res://sounds/jump1.wav" id="3_x7s2x"]
 [ext_resource type="AudioStream" uid="uid://dtivltqjafkmn" path="res://sounds/jump2.wav" id="4_jbenm"]
 [ext_resource type="AudioStream" uid="uid://cjvm8b12hbbmi" path="res://sounds/die1.wav" id="5_tgbxs"]
+[ext_resource type="Texture2D" uid="uid://153t4nbscq6f" path="res://assets/Player_Attack.png" id="6_00vbw"]
+[ext_resource type="Texture2D" uid="uid://cjct8bnu761hc" path="res://assets/player/Player_Walk.png" id="6_lku61"]
 [ext_resource type="AudioStream" uid="uid://cotwq6vpkk7ay" path="res://sounds/die2.wav" id="6_vty3q"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_1o1e8"]
-radius = 44.0
-height = 170.0
+radius = 33.0
+height = 152.0
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_vh3kp"]
 playback_mode = 1
@@ -27,6 +28,96 @@ stream_0/weight = 1.0
 stream_1/stream = ExtResource("4_jbenm")
 stream_1/weight = 1.0
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_w128c"]
+atlas = ExtResource("6_00vbw")
+region = Rect2(0, 0, 200, 200)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ljqqg"]
+atlas = ExtResource("6_00vbw")
+region = Rect2(200, 0, 200, 200)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hychb"]
+atlas = ExtResource("6_00vbw")
+region = Rect2(400, 0, 200, 200)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6rl05"]
+atlas = ExtResource("6_00vbw")
+region = Rect2(600, 0, 200, 200)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qtxmm"]
+atlas = ExtResource("6_00vbw")
+region = Rect2(200, 0, 200, 200)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s84ns"]
+atlas = ExtResource("6_00vbw")
+region = Rect2(0, 0, 200, 200)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_67d1f"]
+atlas = ExtResource("6_lku61")
+region = Rect2(0, 0, 200, 200)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bw4x3"]
+atlas = ExtResource("6_lku61")
+region = Rect2(200, 0, 200, 200)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_erg6b"]
+atlas = ExtResource("6_lku61")
+region = Rect2(400, 0, 200, 200)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_61ydh"]
+atlas = ExtResource("6_lku61")
+region = Rect2(600, 0, 200, 200)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2xi5f"]
+atlas = ExtResource("6_lku61")
+region = Rect2(800, 0, 200, 200)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_goh6h"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w128c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ljqqg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hychb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6rl05")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qtxmm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s84ns")
+}],
+"loop": true,
+"name": &"spoon_attack",
+"speed": 15.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_67d1f")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bw4x3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_erg6b")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_61ydh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2xi5f")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 10.0
+}]
+
 [node name="Player" type="CharacterBody2D" groups=["Player"]]
 script = ExtResource("1_miuig")
 
@@ -42,11 +133,6 @@ color = Color(1, 0.278431, 0.345098, 1)
 polygon = PackedVector2Array(-31, -11, -46, -4, -36, 9, -26, 9, -10, 10, 5, 10, 12, 2, -6, 0, 10, -12, -28, -11)
 
 [node name="Flames" type="Node2D" parent="FlameThrowerAnchor"]
-
-[node name="PlayerSprite" type="Sprite2D" parent="."]
-texture_filter = 1
-position = Vector2(-26, 6)
-texture = ExtResource("2_875oh")
 
 [node name="PlayerDetectionBox" type="Area2D" parent="."]
 
@@ -70,5 +156,13 @@ stream = SubResource("AudioStreamRandomizer_vh3kp")
 
 [node name="jumps_sounds" type="AudioStreamPlayer" parent="."]
 stream = SubResource("AudioStreamRandomizer_wiegp")
+
+[node name="PlayerSprite" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+sprite_frames = SubResource("SpriteFrames_goh6h")
+animation = &"spoon_attack"
+frame = 4
+frame_progress = 0.840339
+offset = Vector2(-36, 4)
 
 [connection signal="area_entered" from="PlayerDetectionBox" to="." method="_on_player_detection_box_area_entered"]
