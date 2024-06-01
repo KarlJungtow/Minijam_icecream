@@ -1,0 +1,27 @@
+[gd_scene load_steps=4 format=3 uid="uid://basn1mplc0hxk"]
+
+[ext_resource type="FontFile" uid="uid://dswc3oqkjpinq" path="res://assets/font.ttf" id="1_r8nm2"]
+[ext_resource type="Script" path="res://hud/ScoreLabel.gd" id="2_7lxna"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_vdrcv"]
+font = ExtResource("1_r8nm2")
+font_size = 48
+font_color = Color(0.97849, 0.788416, 0.871419, 1)
+
+[node name="Hud" type="Node2D"]
+
+[node name="HudCanvas" type="CanvasLayer" parent="."]
+
+[node name="score" type="Label" parent="HudCanvas"]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -307.0
+offset_bottom = 64.0
+grow_horizontal = 0
+text = "score: 0"
+label_settings = SubResource("LabelSettings_vdrcv")
+autowrap_mode = 2
+text_overrun_behavior = 1
+script = ExtResource("2_7lxna")
+metadata/_edit_use_anchors_ = true
