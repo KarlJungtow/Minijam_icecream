@@ -4,7 +4,11 @@ extends CharacterBody2D
 const SPEED = 600.0
 const JUMP_VELOCITY = -400.0
 
+const flame_scene = preload("res://scenes/flame.tscn")
+
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
+
+var using_flamethrower: bool = true
 
 var coyote_time = 0.0
 var late_jump_time = 0.0
@@ -50,6 +54,17 @@ func _physics_process(delta):
 	
 	move_and_slide()
 
+func _input(event):
+	if event is InputEventMouseMotion:
+		if using_flamethrower:
+			$FlameThrowerAnchor.look_at(event.position)
+	if event.is_action_pressed("click"):
+		if using_flamethrower:
+			
+			var instance = flame_scene.instantiate()
+			instance.global_position = $FlameThrowerAnchor/PlaceHolderFlameThrower.global_position
+			instance.rotation = $FlameThrowerAnchor.rotation
+			$FlameThrowerAnchor/Flames.add_child(instance)
 
 func _on_player_detection_box_area_entered(area):
 	if get_tree().get_nodes_in_group("CheckPoint").has(area):

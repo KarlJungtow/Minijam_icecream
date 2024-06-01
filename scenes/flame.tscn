@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=3 uid="uid://dw56be4cd5nt1"]
+
+[ext_resource type="Script" path="res://scenes/flame.gd" id="1_3euuv"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_fvjf8"]
+radius = 23.7697
+
+[node name="Flame" type="Area2D"]
+top_level = true
+script = ExtResource("1_3euuv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_fvjf8")
+
+[node name="Polygon2D" type="Polygon2D" parent="."]
+color = Color(1, 0, 0, 1)
+polygon = PackedVector2Array(-8, -12, 3, -26, 17, -11, 15, -5, 5, -4, 17, 5, 3, 7, 10, 14, -8, 15, -22, 12, -16, 6, -19, 0, -16, -3, -21, -16)
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]

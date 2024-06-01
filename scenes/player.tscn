@@ -21,6 +21,26 @@ polygon = PackedVector2Array(12, 6, 7, 10, 7, 15, 9, 17, 9, 21, 5, 23, 3, 28, 3,
 position = Vector2(0, 7)
 shape = SubResource("CapsuleShape2D_1o1e8")
 
+
+[node name="PlayerDetectionBox" type="Area2D" parent="." groups=["Player"]]
+
+[node name="PlayerCollisionShape" type="CollisionShape2D" parent="PlayerDetectionBox"]
+position = Vector2(0, 7)
+shape = SubResource("CapsuleShape2D_lh2sk")
+
+[node name="FlameThrowerAnchor" type="Node2D" parent="."]
+position = Vector2(1, -31)
+
+[node name="PlaceHolderFlameThrower" type="Polygon2D" parent="FlameThrowerAnchor"]
+position = Vector2(131, -2)
+color = Color(1, 0.278431, 0.345098, 1)
+polygon = PackedVector2Array(-31, -11, -46, -4, -36, 9, -26, 9, -10, 10, 5, 10, 12, 2, -6, 0, 10, -12, -28, -11)
+
+[node name="Flames" type="Node2D" parent="FlameThrowerAnchor"]
+
+[connection signal="area_entered" from="PlayerDetectionBox" to="." method="_on_player_detection_box_area_entered"]
+
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(-26, 6)
 texture = ExtResource("2_875oh")
+
