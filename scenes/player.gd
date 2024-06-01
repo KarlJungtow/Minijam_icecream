@@ -53,8 +53,6 @@ func _physics_process(delta):
 		late_jump_time = -1.0
 		velocity.y = JUMP_VELOCITY
 	
-	
-	
 	var direction = Input.get_axis("move-left", "move-right")
 	if direction > 0: 
 		sprite_2d.scale.x = -1
