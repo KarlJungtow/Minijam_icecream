@@ -7,5 +7,4 @@ func _physics_process(delta):
 
 
 func _on_visible_on_screen_notifier_2d_screen_exited():
-	print("End")
 	queue_free()

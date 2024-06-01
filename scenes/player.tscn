@@ -15,6 +15,7 @@ position = Vector2(-1, 2)
 shape = SubResource("CapsuleShape2D_1o1e8")
 
 [node name="FlameThrowerAnchor" type="Node2D" parent="."]
+visible = false
 position = Vector2(1, -31)
 
 [node name="PlaceHolderFlameThrower" type="Polygon2D" parent="FlameThrowerAnchor"]
@@ -34,5 +35,16 @@ texture = ExtResource("2_875oh")
 [node name="PlayerDetectionShape" type="CollisionShape2D" parent="PlayerDetectionBox"]
 position = Vector2(-1, 2)
 shape = SubResource("CapsuleShape2D_1o1e8")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+limit_bottom = 648
+drag_horizontal_enabled = true
+drag_vertical_enabled = true
+drag_left_margin = 0.3
+drag_top_margin = 0.3
+drag_right_margin = 0.3
+drag_bottom_margin = 0.3
+editor_draw_limits = true
+editor_draw_drag_margin = true
 
 [connection signal="area_entered" from="PlayerDetectionBox" to="." method="_on_player_detection_box_area_entered"]
