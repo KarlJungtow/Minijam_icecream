@@ -14,7 +14,7 @@ var coyote_time = 0.0
 var late_jump_time = 0.0
 
 var start_pos: Vector2
-@onready var sprite_2d = $Sprite2D
+@onready var sprite_2d = $PlayerSprite
 
 func _ready():
 	start_pos = position
