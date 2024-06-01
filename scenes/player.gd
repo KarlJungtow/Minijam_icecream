@@ -70,7 +70,7 @@ func _physics_process(delta):
 func _input(event):
 	if event is InputEventMouseMotion:
 		if using_flamethrower:
-			$FlameThrowerAnchor.look_at(event.position)
+			$FlameThrowerAnchor.look_at(get_global_mouse_position())
 	if event.is_action_pressed("click"):
 		if using_flamethrower:
 			
