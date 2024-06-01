@@ -3,6 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://d4d21k2ui8yt3" path="res://assets/slime_green.png" id="1_e6cjc"]
 [ext_resource type="Script" path="res://scripts/enemy.gd" id="1_l5rm7"]
 [ext_resource type="PackedScene" uid="uid://oxtfdsfew20n" path="res://scenes/killzone.tscn" id="2_65l5i"]
+[ext_resource type="PackedScene" uid="uid://cqimqaf3tpmob" path="res://scenes/melts.tscn" id="4_3kldw"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_edsvr"]
 size = Vector2(10, 8)
@@ -27,8 +28,49 @@ shape = SubResource("RectangleShape2D_edsvr")
 target_position = Vector2(-32, 0)
 
 [node name="RayCast2DRight" type="RayCast2D" parent="."]
-target_position = Vector2(32, 0)
+target_position = Vector2(22, 0)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-3, 1)
-shape = SubResource("RectangleShape2D_7wgki")
+[node name="MeltingParts" type="Node2D" parent="."]
+
+[node name="Melts" parent="MeltingParts" instance=ExtResource("4_3kldw")]
+position = Vector2(48, -5)
+
+[node name="Melts2" parent="MeltingParts" instance=ExtResource("4_3kldw")]
+position = Vector2(68, -5)
+
+[node name="Melts3" parent="MeltingParts" instance=ExtResource("4_3kldw")]
+position = Vector2(88, -5)
+
+[node name="Melts4" parent="MeltingParts" instance=ExtResource("4_3kldw")]
+position = Vector2(109, -5)
+
+[node name="Melts5" parent="MeltingParts" instance=ExtResource("4_3kldw")]
+position = Vector2(47, 16)
+
+[node name="Melts6" parent="MeltingParts" instance=ExtResource("4_3kldw")]
+position = Vector2(67, 16)
+
+[node name="Melts7" parent="MeltingParts" instance=ExtResource("4_3kldw")]
+position = Vector2(87, 15)
+
+[node name="Melts8" parent="MeltingParts" instance=ExtResource("4_3kldw")]
+position = Vector2(108, 15)
+rotation = 0.012737
+
+[node name="Melts9" parent="MeltingParts" instance=ExtResource("4_3kldw")]
+position = Vector2(108, 35)
+rotation = 0.012737
+
+[node name="Melts10" parent="MeltingParts" instance=ExtResource("4_3kldw")]
+position = Vector2(87, 31)
+rotation = -0.0435834
+
+[node name="Melts11" parent="MeltingParts" instance=ExtResource("4_3kldw")]
+position = Vector2(66, 31)
+rotation = -0.0435834
+
+[node name="Melts12" parent="MeltingParts" instance=ExtResource("4_3kldw")]
+position = Vector2(46, 32)
+rotation = -0.0435834
+
+[connection signal="area_entered" from="Killzone" to="." method="_on_killzone_area_entered"]

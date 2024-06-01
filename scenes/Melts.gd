@@ -13,5 +13,10 @@ func _process(delta):
 
 func _on_area_2d_area_entered(area):
 	if area.name == "Flame":
-		queue_free()
+		#remove_child(self) 
+		top_level = true
 		area.queue_free()
+		
+		await get_tree().create_timer(0.1).timeout
+		queue_free()
+		

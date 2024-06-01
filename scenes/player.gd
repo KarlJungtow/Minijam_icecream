@@ -13,6 +13,9 @@ var using_flamethrower: bool = false
 var coyote_time = 0.0
 var late_jump_time = 0.0
 
+var force_push = 1000
+
+
 var attacking = false
 var start_pos: Vector2
 @onready var sprite_2d = $PlayerSprite
@@ -69,6 +72,16 @@ func _physics_process(delta):
 		velocity.x = direction * SPEED
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
+	
+	var collided = move_and_slide()
+	
+	#apply force to collided stuff
+	if collided:
+		for i in get_slide_collision_count():
+			var col = get_slide_collision(i)
+			if col.get_collider() is RigidBody2D:
+				col.get_collider().apply_force(col.get_normal() * -force_push)
+	
 	
 	if abs(velocity.x) >= 0.01 and coyote_time >= 0.0:
 		if $PlayerSprite.is_playing() == false :

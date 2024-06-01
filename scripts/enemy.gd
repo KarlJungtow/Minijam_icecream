@@ -23,7 +23,8 @@ func _process(delta):
 	
 	position.x += direction * SPEED * delta
 	
-	if melting_parts != null and melting_parts.get_child_count() == 0:
+	print(melting_parts.get_child_count())
+	if melting_parts.get_child_count() == 0:
 		get_parent().queue_free()
 
 func _on_killzone_area_entered(area:Area2D):
