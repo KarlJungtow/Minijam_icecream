@@ -8,6 +8,8 @@
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_5p8ag"]
 load_path = "res://.godot/imported/Ground.png-f08cade11b1b3e916f004372551e0865.ctex"
+[ext_resource type="PackedScene" uid="uid://bqmq5pnphm6yl" path="res://scenes/enemy.tscn" id="5_1vusr"]
+[ext_resource type="PackedScene" uid="uid://bk1j06hh033nw" path="res://pickups/scoop.tscn" id="5_vhvam"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_3nxop"]
 texture = SubResource("CompressedTexture2D_5p8ag")
@@ -98,7 +100,7 @@ motion_mirroring = Vector2(1920, 0)
 
 [node name="Sky" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
 texture_filter = 1
-position = Vector2(960, 160)
+position = Vector2(616, 176)
 scale = Vector2(3, 3)
 texture = ExtResource("1_chba2")
 
@@ -143,3 +145,11 @@ format = 2
 environment = SubResource("Environment_3qldg")
 
 [node name="Player" parent="." instance=ExtResource("3_hlpih")]
+
+[node name="enemies" type="Node" parent="."]
+
+[node name="Enemy" parent="enemies" instance=ExtResource("5_1vusr")]
+position = Vector2(169, 415)
+
+[node name="Scoop" parent="." instance=ExtResource("5_vhvam")]
+position = Vector2(503, 353)
