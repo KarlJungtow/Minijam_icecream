@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://cx8ysdow0e702"]
+[gd_scene load_steps=5 format=3 uid="uid://ohhs0wlyc72p"]
 
 [ext_resource type="Texture2D" uid="uid://d4d21k2ui8yt3" path="res://assets/slime_green.png" id="1_e6cjc"]
 [ext_resource type="Script" path="res://scripts/enemy.gd" id="1_l5rm7"]
@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://cqimqaf3tpmob" path="res://scenes/melts.tscn" id="4_3kldw"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_edsvr"]
-size = Vector2(70, 66)
+size = Vector2(10, 8)
 
 [node name="Enemy" type="Node2D"]
 script = ExtResource("1_l5rm7")

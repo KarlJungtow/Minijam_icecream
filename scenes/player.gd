@@ -4,7 +4,6 @@ extends CharacterBody2D
 const SPEED = 800.0
 const JUMP_VELOCITY = -800.0
 
-
 const flame_scene = preload("res://scenes/flame.tscn")
 
 var gravity = 1.5*ProjectSettings.get_setting("physics/2d/default_gravity")
@@ -57,13 +56,11 @@ func _physics_process(delta):
 		late_jump_time = -1.0
 		velocity.y = JUMP_VELOCITY
 	
-	
-	
 	var direction = Input.get_axis("move-left", "move-right")
 	if direction > 0: 
-		sprite_2d.flip_h = true
+		sprite_2d.scale.x = -1
 	elif direction < 0:
-		sprite_2d.flip_h = false
+		sprite_2d.scale.x = 1
 	if direction:
 		velocity.x = direction * SPEED
 	else:
@@ -79,6 +76,13 @@ func _physics_process(delta):
 				col.get_collider().apply_force(col.get_normal() * -force_push)
 	
 	
+	if abs(velocity.x) >= 0.01 and coyote_time >= 0.0:
+		if $PlayerSprite.is_playing() == false:
+			$PlayerSprite.play("walk")
+	else:
+		$PlayerSprite.stop()
+	
+	move_and_slide()
 
 func _input(event):
 	if event is InputEventMouseMotion:

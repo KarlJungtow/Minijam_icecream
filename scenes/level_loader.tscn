@@ -1,0 +1,3 @@
+[gd_scene format=3 uid="uid://b51vpi50io3b3"]
+
+[node name="LevelLoader" type="Node2D"]
