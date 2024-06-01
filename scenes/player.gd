@@ -3,6 +3,8 @@ extends CharacterBody2D
 
 const SPEED = 800.0
 const JUMP_VELOCITY = -400.0
+const RECOIL_STRENGTH = 1000
+
 
 const flame_scene = preload("res://scenes/flame.tscn")
 
@@ -77,7 +79,11 @@ func _input(event):
 			instance.global_position = $FlameThrowerAnchor/PlaceHolderFlameThrower.global_position
 			instance.rotation = $FlameThrowerAnchor.rotation
 			$FlameThrowerAnchor/Flames.add_child(instance)
-
+			
+			var recoil_direction = ($FlameThrowerAnchor.global_position - get_global_mouse_position()).normalized()
+			velocity += recoil_direction * RECOIL_STRENGTH
+			
+			move_and_slide()
 func _on_player_detection_box_area_entered(area):
 	if get_tree().get_nodes_in_group("CheckPoint").has(area):
 		start_pos = area.position
