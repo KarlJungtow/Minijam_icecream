@@ -12,7 +12,7 @@ func _process(delta):
 
 
 func _on_button_pressed():
-	G.change_level("res://scenes/test_level.tscn")
+	G.change_level("res://scenes/levels/level_1.tscn")
 	pass # Replace with function body.
 
 
