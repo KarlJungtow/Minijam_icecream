@@ -12,4 +12,4 @@ func _process(delta):
 	pass
 
 func change_scene():
-	G.change_level("res://scenes/main_menu.tscn")
+	G.change_level("res://scenes/levels/level_1.tscn")
