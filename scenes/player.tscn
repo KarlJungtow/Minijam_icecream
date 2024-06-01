@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 [gd_scene load_steps=16 format=3 uid="uid://bjkukdy2ofn8t"]
+=======
+[gd_scene load_steps=23 format=3 uid="uid://bjkukdy2ofn8t"]
+>>>>>>> 3d430e45cfc6b631437274c7ff67c7a33850d621
 
 [ext_resource type="Script" path="res://scenes/player.gd" id="1_miuig"]
 [ext_resource type="AudioStream" uid="uid://ciyb4jpleh0hu" path="res://sounds/jump1.wav" id="3_x7s2x"]
@@ -27,6 +31,33 @@ stream_0/weight = 1.0
 stream_1/stream = ExtResource("4_jbenm")
 stream_1/weight = 1.0
 
+<<<<<<< HEAD
+=======
+[sub_resource type="AtlasTexture" id="AtlasTexture_5erqo"]
+atlas = ExtResource("6_00vbw")
+region = Rect2(0, 0, 200, 200)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eefkx"]
+atlas = ExtResource("6_00vbw")
+region = Rect2(200, 0, 200, 200)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4pebe"]
+atlas = ExtResource("6_00vbw")
+region = Rect2(400, 0, 200, 200)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0bwo7"]
+atlas = ExtResource("6_00vbw")
+region = Rect2(600, 0, 200, 200)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5uryc"]
+atlas = ExtResource("6_00vbw")
+region = Rect2(200, 0, 200, 200)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3okvt"]
+atlas = ExtResource("6_00vbw")
+region = Rect2(0, 0, 200, 200)
+
+>>>>>>> 3d430e45cfc6b631437274c7ff67c7a33850d621
 [sub_resource type="AtlasTexture" id="AtlasTexture_67d1f"]
 atlas = ExtResource("6_lku61")
 region = Rect2(0, 0, 200, 200)
@@ -49,6 +80,29 @@ region = Rect2(800, 0, 200, 200)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_goh6h"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5erqo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_eefkx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4pebe")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0bwo7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5uryc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3okvt")
+}],
+"loop": false,
+"name": &"spoon_attack",
+"speed": 18.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_67d1f")
@@ -115,6 +169,9 @@ sprite_frames = SubResource("SpriteFrames_goh6h")
 animation = &"walk"
 frame = 4
 frame_progress = 0.965231
+animation = &"spoon_attack"
+frame = 5
+frame_progress = 1.0
 offset = Vector2(-36, 4)
 
 [connection signal="area_entered" from="PlayerDetectionBox" to="." method="_on_player_detection_box_area_entered"]
