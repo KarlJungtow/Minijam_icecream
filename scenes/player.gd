@@ -25,10 +25,17 @@ func get_flame_thrower():
 	$FlameThrowerAnchor.show()
 	using_flamethrower = true
 
-func die():
+func respawn():
 	position = start_pos
 
+func die():
+	$dying_sounds.play()
+	var tween = get_tree().create_tween()
+	tween.tween_interval(1.0)
+	tween.tween_callback(respawn)
+
 func _process(delta):
+	print(G.score)
 	coyote_time -= delta
 	late_jump_time -= delta
 
@@ -38,6 +45,7 @@ func _physics_process(delta):
 		velocity.y += gravity * delta
 
 	if Input.is_action_just_pressed("jump"):
+		$jumps_sounds.play()
 		late_jump_time = 0.1
 	if is_on_floor():
 		coyote_time = 0.1
