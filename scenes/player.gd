@@ -47,10 +47,7 @@ func _physics_process(delta):
 	if not is_on_floor():
 		velocity.y += gravity * delta
 	if Input.is_action_pressed("attack"):
-		print("Attack")
-		if not using_flamethrower:
-			$PlayerSprite.play("spoon_attack")
-			attacking = true
+		attack()
 
 	if $PlayerSprite.is_playing() == false:
 		attacking = false
@@ -109,3 +106,17 @@ func _input(event):
 func _on_player_detection_box_area_entered(area):
 	if get_tree().get_nodes_in_group("CheckPoint").has(area):
 		start_pos = area.position
+
+
+func attack():
+	print("Attack")
+	if not using_flamethrower:
+		$PlayerSprite.play("spoon_attack")
+		attacking = true
+		var enemies = $"../enemies".get_children()
+		if enemies != null:
+			for child in enemies:
+				if abs(child.position.x - position.x) < 125 and abs(child.position.y - position.y) < 80:
+					child.queue_free()
+		
+

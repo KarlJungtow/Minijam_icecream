@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://bjkukdy2ofn8t"]
+[gd_scene load_steps=23 format=3 uid="uid://bjkukdy2ofn8t"]
 
 [ext_resource type="Script" path="res://scenes/player.gd" id="1_miuig"]
 [ext_resource type="AudioStream" uid="uid://ciyb4jpleh0hu" path="res://sounds/jump1.wav" id="3_x7s2x"]
@@ -44,10 +44,6 @@ region = Rect2(400, 0, 200, 200)
 atlas = ExtResource("6_00vbw")
 region = Rect2(600, 0, 200, 200)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_cankx"]
-atlas = ExtResource("6_00vbw")
-region = Rect2(400, 0, 200, 200)
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_5uryc"]
 atlas = ExtResource("6_00vbw")
 region = Rect2(200, 0, 200, 200)
@@ -92,9 +88,6 @@ animations = [{
 "texture": SubResource("AtlasTexture_0bwo7")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_cankx")
-}, {
-"duration": 1.0,
 "texture": SubResource("AtlasTexture_5uryc")
 }, {
 "duration": 1.0,
@@ -102,7 +95,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"spoon_attack",
-"speed": 15.0
+"speed": 18.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -168,7 +161,7 @@ stream = SubResource("AudioStreamRandomizer_wiegp")
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_goh6h")
 animation = &"spoon_attack"
-frame = 6
+frame = 5
 frame_progress = 1.0
 offset = Vector2(-36, 4)
 
