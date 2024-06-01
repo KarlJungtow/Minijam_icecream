@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://scenes/flame.gd" id="1_3euuv"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_fvjf8"]
-radius = 23.7697
+radius = 40.1995
 
 [node name="Flame" type="Area2D"]
 top_level = true

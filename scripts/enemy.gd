@@ -23,7 +23,7 @@ func _process(delta):
 	
 	position.x += direction * SPEED * delta
 	
-	
+	print(melting_parts.get_child_count())
 	if melting_parts.get_child_count() == 0:
 		get_parent().queue_free()
 
