@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://bqmq5pnphm6yl"]
+
+[ext_resource type="Texture2D" uid="uid://d4d21k2ui8yt3" path="res://assets/slime_green.png" id="1_e6cjc"]
+[ext_resource type="PackedScene" uid="uid://oxtfdsfew20n" path="res://scenes/killzone.tscn" id="2_65l5i"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_edsvr"]
+size = Vector2(10, 8)
+
+[node name="Enemy" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_e6cjc")
+
+[node name="Killzone" parent="." instance=ExtResource("2_65l5i")]
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Killzone"]
+shape = SubResource("RectangleShape2D_edsvr")
+
+[node name="RayCast2DLeft" type="RayCast2D" parent="."]
+target_position = Vector2(-6, 0)
+
+[node name="RayCast2DRight" type="RayCast2D" parent="."]
+target_position = Vector2(6, 0)
