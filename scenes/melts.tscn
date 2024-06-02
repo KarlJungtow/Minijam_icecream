@@ -1,7 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://cqimqaf3tpmob"]
+[gd_scene load_steps=5 format=3 uid="uid://dcw85rp1qjjoc"]
 
 [ext_resource type="Script" path="res://scenes/Melts.gd" id="1_lxrku"]
-[ext_resource type="Texture2D" uid="uid://d4d21k2ui8yt3" path="res://assets/slime_green.png" id="2_8b6gi"]
+[ext_resource type="Texture2D" uid="uid://0b33eopo5c4r" path="res://assets/ChocolateEnemy/tile000.png" id="2_did6g"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kegln"]
 
@@ -9,7 +9,7 @@
 
 [node name="Melts" type="RigidBody2D"]
 collision_layer = 2
-mass = 0.01
+can_sleep = false
 script = ExtResource("1_lxrku")
 
 [node name="Area2D" type="Area2D" parent="."]
@@ -21,11 +21,12 @@ shape = SubResource("RectangleShape2D_kegln")
 [node name="Sprite2D" type="Sprite2D" parent="Area2D"]
 texture_filter = 1
 position = Vector2(-73, -18)
-scale = Vector2(1.42857, 1.53846)
-texture = ExtResource("2_8b6gi")
+scale = Vector2(0.476, 0.512)
+texture = ExtResource("2_did6g")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-73, -18)
 shape = SubResource("RectangleShape2D_qukjt")
 
+[connection signal="property_list_changed" from="." to="." method="_on_property_list_changed"]
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]

@@ -93,6 +93,11 @@ func _input(event):
 	if event is InputEventMouseMotion:
 		if using_flamethrower:
 			$FlameThrowerAnchor.look_at(get_global_mouse_position())
+			$FlameThrowerAnchor.rotation_degrees = wrap($FlameThrowerAnchor.rotation_degrees,-180,180)
+			if $FlameThrowerAnchor.rotation_degrees <= -90:
+				$FlameThrowerAnchor/Flamethrower.flip_v = true
+			else:
+				$FlameThrowerAnchor/Flamethrower.flip_v = false
 	if event.is_action_pressed("click"):
 		if using_flamethrower:
 			
