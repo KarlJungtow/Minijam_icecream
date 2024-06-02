@@ -1,6 +1,6 @@
 extends Area2D
 
-var speed = 400
+var speed = 800
 
 func _ready():
 	if randi_range(0,1) == 0:

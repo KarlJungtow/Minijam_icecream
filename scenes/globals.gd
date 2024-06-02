@@ -2,7 +2,8 @@ extends Node
 
 signal pickup_scoop
 signal player_died
-signal handle_collectable
+signal handle_collectable(pos: Vector2)
+signal player_scoop_attack
 @export var score := 0
 const SCOOPS_NEEDED = 1
 const VAN = preload("res://mobs/van.tscn")
@@ -13,13 +14,13 @@ func _ready():
 	G.connect("handle_collectable",Callable(self,"score_aa"))
 	#load_level(current_level)
 
-func score_aa():
+func score_aa(pos: Vector2):
 	score += 1
 	print("New score: " + str(score))
 	if score == SCOOPS_NEEDED:
 		var new_van = VAN.instantiate()
 		add_child(new_van)
-		new_van.position = Vector2(0, 80)  # Set the desired position here
+		new_van.position = Vector2(pos.x - 1000, 80)  # Set the desired position here
 		score = 0
 
 func load_level(id:int):

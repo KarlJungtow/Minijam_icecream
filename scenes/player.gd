@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 
-const SPEED = 800.0
+const SPEED = 400.0
 const JUMP_VELOCITY = -800.0
 
 const flame_scene = preload("res://scenes/flame.tscn")
@@ -35,7 +35,7 @@ func respawn():
 
 func die():
 	$dying_sounds.play()
-	var tween = get_tree().create_tween()
+	var _tween = get_tree().create_tween()
 	respawn()
 
 func _process(delta):
@@ -101,7 +101,7 @@ func _input(event):
 		if using_flamethrower:
 			
 			var instance = flame_scene.instantiate()
-			instance.global_position = $FlameThrowerAnchor/PlaceHolderFlameThrower.global_position
+			instance.global_position = $FlameThrowerAnchor/Flamethrower.global_position
 			instance.rotation = $FlameThrowerAnchor.rotation
 			$FlameThrowerAnchor/Flames.add_child(instance)
 			
@@ -114,10 +114,13 @@ func _on_player_detection_box_area_entered(area):
 
 
 func attack():
-	print("Attack")
+	G.player_scoop_attack.emit()
 	$PlayerSprite.play("spoon_attack")
 	attacking = true
-	var enemies = $"../enemies".get_children()
+	
+	var enemies = $"../enemies"
+	if enemies:
+		enemies = enemies.get_children()
 	if enemies != null:
 		for child in enemies:
 			if abs(child.position.x - position.x) < 125 and abs(child.position.y - position.y) < 80:

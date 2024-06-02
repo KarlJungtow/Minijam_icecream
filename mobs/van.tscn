@@ -23,6 +23,7 @@ animations = [{
 size = Vector2(215, 1398)
 
 [node name="Van" type="Area2D"]
+z_index = 5
 script = ExtResource("1_gi7e5")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]

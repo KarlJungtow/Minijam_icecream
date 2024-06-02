@@ -1,6 +1,7 @@
-[gd_scene load_steps=23 format=3 uid="uid://bjkukdy2ofn8t"]
+[gd_scene load_steps=24 format=3 uid="uid://bjkukdy2ofn8t"]
 
 [ext_resource type="Script" path="res://scenes/player.gd" id="1_miuig"]
+[ext_resource type="Texture2D" uid="uid://ckb7uu2pxdkxf" path="res://assets/Flamethrower.png" id="2_qjlae"]
 [ext_resource type="AudioStream" uid="uid://ciyb4jpleh0hu" path="res://sounds/jump1.wav" id="3_x7s2x"]
 [ext_resource type="AudioStream" uid="uid://dtivltqjafkmn" path="res://sounds/jump2.wav" id="4_jbenm"]
 [ext_resource type="AudioStream" uid="uid://cjvm8b12hbbmi" path="res://sounds/die1.wav" id="5_tgbxs"]
@@ -9,8 +10,7 @@
 [ext_resource type="AudioStream" uid="uid://cotwq6vpkk7ay" path="res://sounds/die2.wav" id="6_vty3q"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_1o1e8"]
-radius = 33.0
-radius = 33.0
+radius = 25.0
 height = 152.0
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_vh3kp"]
@@ -33,21 +33,17 @@ stream_1/weight = 1.0
 atlas = ExtResource("6_00vbw")
 region = Rect2(0, 0, 200, 200)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_ljqqg"]
-atlas = ExtResource("6_00vbw")
-region = Rect2(200, 0, 200, 200)
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_hychb"]
 atlas = ExtResource("6_00vbw")
 region = Rect2(400, 0, 200, 200)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_6rl05"]
-atlas = ExtResource("6_00vbw")
-region = Rect2(600, 0, 200, 200)
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_qtxmm"]
 atlas = ExtResource("6_00vbw")
 region = Rect2(200, 0, 200, 200)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6rl05"]
+atlas = ExtResource("6_00vbw")
+region = Rect2(600, 0, 200, 200)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_s84ns"]
 atlas = ExtResource("6_00vbw")
@@ -80,16 +76,13 @@ animations = [{
 "texture": SubResource("AtlasTexture_w128c")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_ljqqg")
-}, {
-"duration": 1.0,
 "texture": SubResource("AtlasTexture_hychb")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_6rl05")
+"texture": SubResource("AtlasTexture_qtxmm")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_qtxmm")
+"texture": SubResource("AtlasTexture_6rl05")
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_s84ns")
@@ -119,7 +112,11 @@ animations = [{
 "speed": 10.0
 }]
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_vevv5"]
+radius = 38.0
+
 [node name="Player" type="CharacterBody2D" groups=["Player"]]
+z_index = 4
 script = ExtResource("1_miuig")
 
 [node name="PlayerCollisionShape" type="CollisionShape2D" parent="."]
@@ -128,10 +125,10 @@ shape = SubResource("CapsuleShape2D_1o1e8")
 
 [node name="FlameThrowerAnchor" type="Node2D" parent="."]
 
-[node name="PlaceHolderFlameThrower" type="Polygon2D" parent="FlameThrowerAnchor"]
-position = Vector2(131, -2)
-color = Color(1, 0.278431, 0.345098, 1)
-polygon = PackedVector2Array(-31, -11, -46, -4, -36, 9, -26, 9, -10, 10, 5, 10, 12, 2, -6, 0, 10, -12, -28, -11)
+[node name="Flamethrower" type="Sprite2D" parent="FlameThrowerAnchor"]
+texture_filter = 1
+position = Vector2(128, -4)
+texture = ExtResource("2_qjlae")
 
 [node name="Flames" type="Node2D" parent="FlameThrowerAnchor"]
 
@@ -142,13 +139,15 @@ position = Vector2(-1, 2)
 shape = SubResource("CapsuleShape2D_1o1e8")
 
 [node name="Camera2D" type="Camera2D" parent="."]
+offset = Vector2(160, 0)
 limit_bottom = 648
 drag_horizontal_enabled = true
 drag_vertical_enabled = true
-drag_left_margin = 0.3
-drag_top_margin = 0.3
-drag_right_margin = 0.3
-drag_bottom_margin = 0.3
+drag_horizontal_offset = -1.0
+drag_left_margin = 0.4
+drag_top_margin = 0.4
+drag_right_margin = 0.0
+drag_bottom_margin = 0.4
 editor_draw_limits = true
 editor_draw_drag_margin = true
 
@@ -161,7 +160,15 @@ stream = SubResource("AudioStreamRandomizer_wiegp")
 [node name="PlayerSprite" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_goh6h")
-animation = &"walk"
+animation = &"spoon_attack"
+frame = 4
+frame_progress = 1.0
 offset = Vector2(-36, 4)
+
+[node name="PlayerScoopBox" type="Area2D" parent="PlayerSprite" groups=["PlayerScoop"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerSprite/PlayerScoopBox"]
+position = Vector2(-93, -3)
+shape = SubResource("CircleShape2D_vevv5")
 
 [connection signal="area_entered" from="PlayerDetectionBox" to="." method="_on_player_detection_box_area_entered"]

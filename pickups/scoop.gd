@@ -1,22 +1,30 @@
 extends Area2D
 
-# Called when the node enters the scene tree for the first time.
+var player_in = false
+var player_pos: Vector2
+var can_scoop = true
+
 func _ready():
-	pass # Replace with function body.
+	G.connect("player_scoop_attack",Callable(self,"handle_player_scoop"))
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
-
-
-
-func _on_body_entered(body):
-	if body.is_in_group("Player"):
-		G.handle_collectable.emit()
-		$AnimationPlayer.play("death")
-		$Sprite2D/CPUParticles2D.emitting = true
-
+func handle_player_scoop():
+	if player_in:
+		if can_scoop:
+			can_scoop = false
+			G.handle_collectable.emit(player_pos)
+			$AnimationPlayer.play("death")
+			$Sprite2D/CPUParticles2D.emitting = true
 
 func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 	if anim_name == "death":
 		queue_free()
+
+
+func _on_area_entered(area):
+	if area.is_in_group("PlayerScoop"):
+		player_pos = area.position
+		player_in = true
+
+func _on_area_exited(area):
+	if area.is_in_group("PlayerScoop"):
+		player_in = false

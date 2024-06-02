@@ -1,8 +1,23 @@
-[gd_scene load_steps=6 format=3 uid="uid://bqmq5pnphm6yl"]
+[gd_scene load_steps=21 format=3 uid="uid://bqmq5pnphm6yl"]
 
 [ext_resource type="Script" path="res://scripts/enemy.gd" id="1_l5rm7"]
 [ext_resource type="PackedScene" uid="uid://cyft5asqax5y3" path="res://scenes/killzone.tscn" id="2_65l5i"]
 [ext_resource type="PackedScene" uid="uid://dcw85rp1qjjoc" path="res://scenes/melts.tscn" id="4_3kldw"]
+[ext_resource type="Texture2D" uid="uid://k4wwcseqfl45" path="res://assets/ChocolateEnemy/tile001.png" id="4_5ibms"]
+[ext_resource type="Texture2D" uid="uid://dqrw6y131xk2r" path="res://assets/ChocolateEnemy/tile002.png" id="5_fau1u"]
+[ext_resource type="Texture2D" uid="uid://bcbislkuur2cx" path="res://assets/ChocolateEnemy/tile003.png" id="6_ab6al"]
+[ext_resource type="Texture2D" uid="uid://bmxby7oy0mxk2" path="res://assets/ChocolateEnemy/tile004.png" id="7_xosh5"]
+[ext_resource type="Texture2D" uid="uid://be3g8vhctm83y" path="res://assets/ChocolateEnemy/tile005.png" id="8_34in4"]
+[ext_resource type="Texture2D" uid="uid://ca15fh4nxpjpm" path="res://assets/ChocolateEnemy/tile006.png" id="9_1qn2d"]
+[ext_resource type="Texture2D" uid="uid://dr3o6rh2nxr8s" path="res://assets/ChocolateEnemy/tile007.png" id="10_gwt4x"]
+[ext_resource type="Texture2D" uid="uid://85oxtauy460f" path="res://assets/ChocolateEnemy/tile011.png" id="11_mutir"]
+[ext_resource type="Texture2D" uid="uid://dwuhamyhqqijp" path="res://assets/ChocolateEnemy/tile010.png" id="12_sd4sm"]
+[ext_resource type="Texture2D" uid="uid://br2odvf4svmru" path="res://assets/ChocolateEnemy/tile009.png" id="13_5g7rw"]
+[ext_resource type="Texture2D" uid="uid://bq8h5bxjug0vq" path="res://assets/ChocolateEnemy/tile008.png" id="14_s47na"]
+[ext_resource type="Texture2D" uid="uid://6r2sw68bilpa" path="res://assets/ChocolateEnemy/tile015.png" id="15_j6fob"]
+[ext_resource type="Texture2D" uid="uid://d4no7rwruv6il" path="res://assets/ChocolateEnemy/tile014.png" id="16_jj3o6"]
+[ext_resource type="Texture2D" uid="uid://cjunsdi3g3yxf" path="res://assets/ChocolateEnemy/tile013.png" id="17_d1bbm"]
+[ext_resource type="Texture2D" uid="uid://hctff7bn7s0d" path="res://assets/ChocolateEnemy/tile012.png" id="18_4mm4n"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_edsvr"]
 size = Vector2(10, 8)
@@ -37,70 +52,115 @@ position = Vector2(44, -6)
 position = Vector2(67, -6)
 id = 1
 
+[node name="Sprite2D" parent="MeltingParts/Melts2/Area2D" index="1"]
+texture = ExtResource("4_5ibms")
+
 [node name="Melts3" parent="MeltingParts" instance=ExtResource("4_3kldw")]
 position = Vector2(88, -5)
 id = 2
+
+[node name="Sprite2D" parent="MeltingParts/Melts3/Area2D" index="1"]
+texture = ExtResource("5_fau1u")
 
 [node name="Melts4" parent="MeltingParts" instance=ExtResource("4_3kldw")]
 position = Vector2(109, -5)
 id = 3
 
+[node name="Sprite2D" parent="MeltingParts/Melts4/Area2D" index="1"]
+texture = ExtResource("6_ab6al")
+
 [node name="Melts5" parent="MeltingParts" instance=ExtResource("4_3kldw")]
 position = Vector2(44, 15)
 id = 4
+
+[node name="Sprite2D" parent="MeltingParts/Melts5/Area2D" index="1"]
+texture = ExtResource("7_xosh5")
 
 [node name="Melts6" parent="MeltingParts" instance=ExtResource("4_3kldw")]
 position = Vector2(65, 15)
 id = 5
 
+[node name="Sprite2D" parent="MeltingParts/Melts6/Area2D" index="1"]
+texture = ExtResource("8_34in4")
+
 [node name="Melts7" parent="MeltingParts" instance=ExtResource("4_3kldw")]
 position = Vector2(85, 15)
 id = 6
+
+[node name="Sprite2D" parent="MeltingParts/Melts7/Area2D" index="1"]
+texture = ExtResource("9_1qn2d")
 
 [node name="Melts8" parent="MeltingParts" instance=ExtResource("4_3kldw")]
 position = Vector2(108, 15)
 rotation = 0.012737
 id = 7
 
+[node name="Sprite2D" parent="MeltingParts/Melts8/Area2D" index="1"]
+texture = ExtResource("10_gwt4x")
+
 [node name="Melts9" parent="MeltingParts" instance=ExtResource("4_3kldw")]
 position = Vector2(108, 35)
 rotation = 0.012737
 id = 11
+
+[node name="Sprite2D" parent="MeltingParts/Melts9/Area2D" index="1"]
+texture = ExtResource("11_mutir")
 
 [node name="Melts10" parent="MeltingParts" instance=ExtResource("4_3kldw")]
 position = Vector2(88, 31)
 rotation = -0.0435834
 id = 10
 
+[node name="Sprite2D" parent="MeltingParts/Melts10/Area2D" index="1"]
+texture = ExtResource("12_sd4sm")
+
 [node name="Melts11" parent="MeltingParts" instance=ExtResource("4_3kldw")]
 position = Vector2(65, 34)
 rotation = -0.0435834
 id = 9
+
+[node name="Sprite2D" parent="MeltingParts/Melts11/Area2D" index="1"]
+texture = ExtResource("13_5g7rw")
 
 [node name="Melts12" parent="MeltingParts" instance=ExtResource("4_3kldw")]
 position = Vector2(45, 36)
 rotation = -0.018662
 id = 8
 
+[node name="Sprite2D" parent="MeltingParts/Melts12/Area2D" index="1"]
+texture = ExtResource("14_s47na")
+
 [node name="Melts13" parent="MeltingParts" instance=ExtResource("4_3kldw")]
 position = Vector2(108, 59)
 rotation = 0.012737
 id = 15
+
+[node name="Sprite2D" parent="MeltingParts/Melts13/Area2D" index="1"]
+texture = ExtResource("15_j6fob")
 
 [node name="Melts14" parent="MeltingParts" instance=ExtResource("4_3kldw")]
 position = Vector2(87, 55)
 rotation = -0.0435834
 id = 14
 
+[node name="Sprite2D" parent="MeltingParts/Melts14/Area2D" index="1"]
+texture = ExtResource("16_jj3o6")
+
 [node name="Melts15" parent="MeltingParts" instance=ExtResource("4_3kldw")]
 position = Vector2(66, 55)
 rotation = -0.0435834
 id = 13
 
+[node name="Sprite2D" parent="MeltingParts/Melts15/Area2D" index="1"]
+texture = ExtResource("17_d1bbm")
+
 [node name="Melts16" parent="MeltingParts" instance=ExtResource("4_3kldw")]
 position = Vector2(46, 57)
 rotation = -0.0435834
 id = 12
+
+[node name="Sprite2D" parent="MeltingParts/Melts16/Area2D" index="1"]
+texture = ExtResource("18_4mm4n")
 
 [connection signal="area_entered" from="Killzone" to="." method="_on_killzone_area_entered"]
 
